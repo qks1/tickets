@@ -1,0 +1,19 @@
+<h1>Добавление новой станции</h1>
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
+<table>
+  <% form_tag :action => 'add_commit' do %>
+  <tr><td><h4>Название станции:</h4></td>
+      <td><%= text_field_tag('station[name]', '', :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Населённый пункт:</h4></td>
+      <td><%= text_field_tag ('station[city]', '', :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Вид транспорта:</h4></td>
+      <td><%= kinds_list('station[transport]') %></td>
+  </tr>
+  <tr><td><%= submit_tag 'Добавить' %></td>
+  <% end %>
+      <td><%= button_to 'Отмена', :action => 'list' %></td>
+  </tr>
+</table>
+

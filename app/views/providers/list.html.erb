@@ -1,0 +1,27 @@
+<h1>Список поставщиков</h1>
+<table>
+  <tr>
+    <th>Название компании</th>
+    <th>Регистрационный номер</th>
+    <th>Юридический адрес</th>
+    <th>Фактический адрес</th>
+    <th>Веб-сайт</th>
+    <th>Телефон</th>
+    <th>e-mail</th>
+  </tr>
+<% for item in @providers %>
+  <tr>
+    <td><%= item.company_name %></td>
+    <td><%= item.reg_number %></td>
+    <td><%= item.jur_address %></td>
+    <td><%= item.fact_address %></td>
+    <td><%= item.site %></td>
+    <td><%= number_to_phone(item.phone, :area_code => true) %></td>
+    <td><%= item.email %></td>
+    <td><%= button_to 'Редактировать', :action => 'edit', :id => item.id %></td>
+    <td><%= button_to 'Удалить из базы', :action => 'destroy', :id => item.id %></td>
+  </tr>
+<% end %>
+</table>
+<p><%= link_to 'Добавить поставщика', :action => 'add' %></p>
+<p><%= link_to 'На главную', :controller => 'main' %></p>

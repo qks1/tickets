@@ -1,0 +1,30 @@
+<h1>Редактирование информации о поставщике</h1>
+<table>
+  <% form_tag :action => 'edit_commit' do %>
+  <%= hidden_field_tag('provider[id]', @item.id)  %>
+  <tr><td><h4>Название компании:</h4></td>
+      <td><%= text_field_tag('provider[company_name]', "#{@item.company_name}", :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Регистрационный номер:</h4></td>
+      <td><%= text_field_tag('provider[reg_number]', "#{@item.reg_number}", :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Юридический адрес:</h4></td>
+      <td><%= text_field_tag('provider[jur_address]', "#{@item.jur_address}", :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Фактический адрес:</h4></td>
+      <td><%= text_field_tag('provider[fact_address]', "#{@item.fact_address}", :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Веб-сайт:</h4></td>
+      <td><%= text_field_tag('provider[site]', "#{@item.site}", :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Телефон (десятизначный номер):</h4></td>
+      <td><%= text_field_tag('provider[phone]', "#{@item.phone}", :size => 10) %></td>
+  </tr>
+  <tr><td><h4>Электронная почта:</h4></td>
+      <td><%= text_field_tag('provider[email]', "#{@item.email}", :size => 32) %></td>
+  </tr>
+  <tr><td><%= submit_tag 'Сохранить изменения' %></td>
+  <% end %>
+      <td><%= button_to 'Отмена', :action => 'list' %></td>
+  </tr>
+</table>
