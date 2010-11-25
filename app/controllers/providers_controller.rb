@@ -25,7 +25,12 @@ class ProvidersController < ApplicationController
       p.attributes = params['provider']
       p.save
     end
-    redirect_to(:action => :list)
+    redirect_to(:action => :info, :id => p.id)
+  end
+  
+  def info
+    @item = Provider.find(params[:id])
+    redirect_to(:action => :list) if @item.nil?
   end
 
   def destroy

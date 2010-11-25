@@ -8,6 +8,8 @@ class Station < ActiveRecord::Base
   validates_inclusion_of :transport,
     :in => 0..3,
     :message => 'Возможно только 4 вида транспорта'
+    
+  has_many :route_stations
 
   def before_validation()
     self.attribute_names.each do |n|

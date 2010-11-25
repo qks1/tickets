@@ -5,12 +5,12 @@ class Provider < ActiveRecord::Base
     :message => 'Должен быть указан юридический адрес'
   validates_presence_of :fact_address,
     :message => 'Должен быть указан фактический адрес'
-  validates_presence_of :reg_number,
-    :message => 'Должен быть указан регистрационный номер фирмы'
   validates_presence_of :phone,
     :message => 'Должен быть указан номер телефона'
   validates_presence_of :email,
     :message => 'Должен быть указан адрес электронной почты'
+    
+  has_many :routes
     
   def before_validation()
     self.attribute_names.each do |n|

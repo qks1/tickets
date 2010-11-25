@@ -9,11 +9,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101122224841) do
+ActiveRecord::Schema.define(:version => 20101124233940) do
 
   create_table "providers", :force => true do |t|
     t.text     "company_name", :null => false
-    t.text     "reg_number",   :null => false
     t.text     "jur_address",  :null => false
     t.text     "fact_address", :null => false
     t.integer  "phone",        :null => false
@@ -24,21 +23,19 @@ ActiveRecord::Schema.define(:version => 20101122224841) do
   end
 
   create_table "route_stations", :force => true do |t|
-    t.integer  "route_id",        :null => false
-    t.integer  "station_id",      :null => false
-    t.integer  "number_in_route", :null => false
-    t.integer  "arrival_time",    :null => false
-    t.integer  "departure_time",  :null => false
+    t.integer  "route_id",   :null => false
+    t.integer  "station_id", :null => false
+    t.text     "arr_time",   :null => false
+    t.text     "dep_time",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "routes", :force => true do |t|
-    t.text     "number",               :null => false
-    t.integer  "transport",            :null => false
-    t.integer  "arrival_station_id",   :null => false
-    t.integer  "arrival_time",         :null => false
-    t.integer  "departure_station_id", :null => false
+    t.integer  "provider_id", :null => false
+    t.text     "number",      :null => false
+    t.integer  "transport",   :null => false
+    t.text     "remarks"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
