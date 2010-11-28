@@ -25,8 +25,12 @@ ActiveRecord::Schema.define(:version => 20101124233940) do
   create_table "route_stations", :force => true do |t|
     t.integer  "route_id",   :null => false
     t.integer  "station_id", :null => false
-    t.text     "arr_time",   :null => false
-    t.text     "dep_time",   :null => false
+    t.integer  "arr_day",    :null => false
+    t.integer  "arr_hour",   :null => false
+    t.integer  "arr_minute", :null => false
+    t.integer  "dep_day",    :null => false
+    t.integer  "dep_hour",   :null => false
+    t.integer  "dep_minute", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

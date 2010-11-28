@@ -1,6 +1,6 @@
 class StationsController < ApplicationController
   def list
-    @stations = Station.find(:all, :order => "name")
+    @stations = Station.find(:all, :order => 'transport, name')
   end
 
   def add

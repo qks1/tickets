@@ -2,7 +2,6 @@
 <table>
 <% for item in @stations %>
   <tr>
-  <td><%= item.id %></td>
     <td><%= item.name %></td>
     <td><%= item.city %></td>
     <td><%= get_transport(item.transport) %></td>

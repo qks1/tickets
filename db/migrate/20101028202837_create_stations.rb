@@ -17,7 +17,7 @@ class CreateStations < ActiveRecord::Migration
     Station.create(:name => 'Бологое', :city => 'Бологое', :transport => 1)
     Station.create(:name => 'Санкт-Петербург (Московский вокзал)', :city => 'Санкт-Петербург', :transport => 1)
     Station.create(:name => 'Москва (Ярославский вокзал)', :city => 'Москва', :transport => 1)
-    Station.create(:name => 'Ярославль', :city => 'Ярославль', :transport => 1)
+    Station.create(:name => 'Ярославль-главный', :city => 'Ярославль', :transport => 1)
     Station.create(:name => 'Владимир', :city => 'Владимир', :transport => 1)
     Station.create(:name => 'Нижний Новгород-Московский', :city => 'Нижний Новгород', :transport => 1)
     Station.create(:name => 'Москва (подворотня)', :city => 'Москва', :transport => 2)
@@ -25,6 +25,7 @@ class CreateStations < ActiveRecord::Migration
     Station.create(:name => 'Воронеж (автовокзал)', :city => 'Воронеж', :transport => 2)
     Station.create(:name => 'Хельсинки (порт)', :city => 'Хельсинки', :transport => 3)
     Station.create(:name => 'Стокгольм (порт)', :city => 'Стокгольм', :transport => 3)
+    Station.create(:name => 'Кострома', :city => 'Кострома', :transport => 1)
   end
 
   def self.down
