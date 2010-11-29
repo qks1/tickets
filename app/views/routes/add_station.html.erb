@@ -1,0 +1,20 @@
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
+<% form_tag :action => 'add_station_commit' do %>
+<%= hidden_field_tag('route_station[route_id]', @route_id)  %>
+<table>
+  <tr>
+    <th>Станция:</th>
+    <td><%= stations_list('route_station[station_id]', @transport) %></td>
+  </tr>
+  <tr>
+    <th>Время прибытия:</th>
+    <td>День: <%= text_field_tag('route_station[arr_day]', '0', :size => 2) %> Часы: <%= text_field_tag('route_station[arr_hour]', '', :size => 2) %> Минуты: <%= text_field_tag('route_station[arr_minute]', '', :size => 2) %></td>
+  </tr>
+  <tr>
+    <th>Время отправления:</th>
+    <td>День: <%= text_field_tag('route_station[dep_day]', '0', :size => 2) %> Часы: <%= text_field_tag('route_station[dep_hour]', '', :size => 2) %> Минуты: <%= text_field_tag('route_station[dep_minute]', '', :size => 2) %></td>
+  </tr>
+  </tr><td><%= submit_tag 'Сохранить изменения' %></td>
+      <% end %>
+      <td><%= button_to 'Отмена', :action => 'view', :id => @route_id %></td>
+</table>

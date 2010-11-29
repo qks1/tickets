@@ -1,0 +1,13 @@
+<h1>Даты хождения маршрута <%= @route.number %></h1>
+<table>
+  <% for d in @dates %>
+    <tr>
+      <td><%= date_format(d.date) %></td>
+      <td><%= button_to 'Удалить', :action => 'delete_date', :id => d.id, :route_id => @route.id %>
+    </tr>
+  <% end %>  
+</table>
+<%= button_to 'Добавить дату', :action => 'add_date', :route_id => @route.id %>
+<%= link_to 'Назад', :action => 'view', :id => @route.id %></td><br />
+<%= link_to 'К списку маршрутов', :action => 'list' %></td><br />
+<%= link_to 'На главную', :controller => 'main' %></td>

@@ -1,0 +1,27 @@
+<h1>Маршрут № <%= @item.number %></h1>
+<h3><%= arr_and_dep(@item.id, 'station') %></h3>
+<% form_tag :action => 'edit_dates' do %>
+  <%= hidden_field_tag('route_id', @item.id)  %>
+  <h4>Даты хождения маршрута:</h4>
+  <p><%= print_dates(@dates) %></p>
+  <%= submit_tag 'Редактировать даты' %>
+<% end %>
+<table>
+  <tr>
+    <th>Станция</th>
+    <th>Прибытие</th>
+    <th>Отправление</th>
+  </tr>
+  <% for st in @stations %>
+  <tr>
+    <td><%= st.station.name %></td>
+    <td><%= time_to_string(st.arr_day, st.arr_hour.to_s, st.arr_minute.to_s) %></td>
+    <td><%= time_to_string(st.dep_day, st.dep_hour.to_s, st.dep_minute.to_s) %></td>
+    <td><%= button_to 'Редактировать', :action => 'edit_station', :id => st.id, :route_id => @item.id %></td>
+    <td><%= button_to 'Удалить из маршрута', :action => 'delete_station', :id => st.id, :route_id => @item.id %></td>
+  </tr>
+  <% end %>
+</table>
+<%= button_to 'Добавить станцию к маршруту', :action => 'add_station', :route_id => @item.id %>
+<%= link_to 'Назад к списку маршрутов', :action => 'list' %><br />
+<%= link_to 'На главную', :controller => 'main' %>

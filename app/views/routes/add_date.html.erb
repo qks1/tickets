@@ -1,0 +1,12 @@
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
+<% form_tag :action => 'add_date_commit' do %>
+<%= hidden_field_tag('route_date[route_id]', @route_id)  %>
+<table>
+  <tr>
+    <th>Дата:</th>
+    <td><%= date_select 'route_date', :date, :order => [:day, :month, :year] %></td>
+  </tr>
+  <tr><td><%= submit_tag 'Сохранить изменения' %></td>
+      <% end %>
+      <td><%= button_to 'Отмена', :action => 'edit_dates', :route_id => @route_id %></td></tr>
+</table>

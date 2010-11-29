@@ -1,0 +1,16 @@
+<% form_tag :action => 'edit_station_commit' do %>
+<%= hidden_field_tag('route_station[id]', @item.id)  %>
+<%= hidden_field_tag('route_station[route_id]', @route_id)  %>
+<table>
+  <tr>
+    <th>Время прибытия:</th>
+    <td><%= text_field_tag('route_station[arr_time]', "#{@item.arr_time}", :size => 6) %></td>
+  </tr>
+  <tr>
+    <th>Время отправления:</th>
+    <td><%= text_field_tag('route_station[dep_time]', "#{@item.dep_time}", :size => 6) %></td>
+  </tr>
+  </tr><td><%= submit_tag 'Сохранить изменения' %></td>
+      <% end %>
+      <td><%= button_to 'Отмена', :action => 'view', :id => @route_id %></td>
+</table

@@ -1,0 +1,19 @@
+<h1>Редактирование информации о маршруте</h1>
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
+<table>
+  <% form_tag :action => 'edit_commit' do %>
+  <%= hidden_field_tag('route[id]', @item.id)  %>
+  <tr><td><h4>Номер:</h4></td>
+      <td><%= text_field_tag('route[number]', "#{@item.number}", :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Вид транспорта:</h4></td>
+      <td><%= kinds_list('route[transport]', @item.transport) %></td>
+  </tr>
+  <tr><td><h4>Перевозчик:</h4></td>
+      <td><%= providers_list('route[provider_id]', @item.provider_id) %></td>
+  </tr>
+  <tr><td><%= submit_tag 'Сохранить' %></td>
+  <% end %>
+      <td><%= button_to 'Отмена', :action => 'list' %></td>
+  </tr>
+</table>
