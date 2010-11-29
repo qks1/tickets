@@ -1,0 +1,8 @@
+<h1>Список пользователей</h1>
+<table>
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= u.username %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,11 @@
+<h1>Список пользователей</h1>
+<table>
+	<% if @users.nil?%>
+	<% else %>
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= u.username %></td>
+    </tr>
+  <% end %>
+	<% end %>
+</table>

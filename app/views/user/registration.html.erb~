@@ -1,0 +1,18 @@
+<h1>Регистрация</h1>
+<%= show_errors(params['error']) unless params['error'].nil? %>
+<table>
+  <% form_tag :action => 'registration' do %>
+  <tr><td><h4>username:</h4></td>
+      <td><%= text_field_tag('user[username]', '', :size => 32) %></td>
+  </tr>
+  <tr><td><h4>password:</h4></td>
+      <td><%= password_field_tag('user[password]', '', :size => 32) %></td>
+  </tr>
+  <tr><td><h4>email:</h4></td>
+      <td><%= text_field_tag('user[email]', '', :size => 32) %></td>
+  </tr>
+	<% user[created_at] = Time.now %>
+  <tr><td><%= submit_tag 'Регистрация' %></td>
+  <% end %>
+  </tr>
+</table>
