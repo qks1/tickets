@@ -1,0 +1,11 @@
+<h1>Информация о <%= get_transport(@unit.transport) %>е</h1>
+<h3><%= @unit.description %></h3>
+<h4>Схема:</h4>
+<%= image_tag "#{@unit.image}" %>
+<p><b>Всего мест:</b>  <%= @places.size %></p>
+<% if @unit.transport != 2 %>
+<b>В том числе:</b>
+<%= get_categories_places(@places, @unit.transport) %>
+<% end %>
+<%= link_to 'Назад', :action => 'list' %><br />
+<%= link_to 'На главную', :controller => 'main' %>

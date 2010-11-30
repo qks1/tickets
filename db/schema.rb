@@ -9,7 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101128225406) do
+ActiveRecord::Schema.define(:version => 20101130004907) do
+
+  create_table "bus_unit_places", :force => true do |t|
+    t.integer  "unit_id",    :null => false
+    t.integer  "number",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plane_unit_places", :force => true do |t|
+    t.integer  "unit_id",    :null => false
+    t.integer  "number",     :null => false
+    t.integer  "category",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "providers", :force => true do |t|
     t.text     "company_name", :null => false
@@ -55,6 +70,31 @@ ActiveRecord::Schema.define(:version => 20101128225406) do
     t.text     "name",       :null => false
     t.text     "city",       :null => false
     t.integer  "transport",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "units", :force => true do |t|
+    t.integer  "transport",   :null => false
+    t.text     "description", :null => false
+    t.text     "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.text     "username"
+    t.text     "password"
+    t.text     "email"
+    t.datetime "created_at"
+    t.integer  "type"
+    t.datetime "updated_at"
+  end
+
+  create_table "wagon_unit_places", :force => true do |t|
+    t.integer  "unit_id",    :null => false
+    t.integer  "number",     :null => false
+    t.integer  "category",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

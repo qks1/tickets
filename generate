@@ -1,0 +1,28 @@
+Скрипт запущен Втр 30 Ноя 2010 03:47:35
+]0;darkfun@laptop: ~/5sem/ticketsdarkfun@laptop:~/5sem/tickets$ script/server [Kscript/server cd 5sem/tickets/[2Pscript/server [K^C
+]0;darkfun@laptop: ~/5sem/ticketsdarkfun@laptop:~/5sem/tickets$ script/server [Kscript/generate model plane_unit_place
+      exists  app/models/
+      exists  test/unit/
+      exists  test/fixtures/
+      create  app/models/plane_unit_place.rb
+      create  test/unit/plane_unit_place_test.rb
+      create  test/fixtures/plane_unit_places.yml
+      exists  db/migrate
+      create  db/migrate/20101130004758_create_plane_unit_places.rb
+]0;darkfun@laptop: ~/5sem/ticketsdarkfun@laptop:~/5sem/tickets$ script/generate model plane_unit_place[1P plane_unit_place[1P plane_unit_place[1P plane_unit_place[1P plane_unit_place[1P plane_unit_placeb plane_unit_placeu plane_unit_places plane_unit_place[1P plane_unit_place[1P plane_unit_place[1P plane_unit_place[1Pplane_unit_place[C plane_unit_placem plane_unit_placeo plane_unit_placed plane_unit_placee plane_unit_placel plane_unit_place[C plane_unit_place[C[1Pplane_unit_place[C[C[C[C[C[1P_unit_place[1P_unit_place[1P_unit_place[1P_unit_place[1P_unit_placeb_unit_placeu_unit_places_unit_place
+      exists  app/models/
+      exists  test/unit/
+      exists  test/fixtures/
+      create  app/models/bus_unit_place.rb
+      create  test/unit/bus_unit_place_test.rb
+      create  test/fixtures/bus_unit_places.yml
+      exists  db/migrate
+      create  db/migrate/20101130004817_create_bus_unit_places.rb
+]0;darkfun@laptop: ~/5sem/ticketsdarkfun@laptop:~/5sem/tickets$ script/generate model bus_unit_placeplane_unit_placeserver [Kcd 5sem/tickets/[1Prake db:migrate VERSION=20101128210826[K VERSION=20101128210826[K VERSION=20101128210826[K VERSION=20101128210826[Kscript/generate migration add_routes_dates[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[27Prake db:migratescript/generate migration add_routes_dates[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[27Prake db:migratescript/generate migration add_routes_dates[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[27Prake db:migratescript/generate model route_dates[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[18Prake db:migratescript/generate migration add_routes_dates[K[K[K[K[K[K[K[K[K[K[K[Kw[Kplane_routes[K_[K[K[K[K[K[Kunit_places
+      exists  db/migrate
+      create  db/migrate/20101130004856_add_plane_unit_places.rb
+]0;darkfun@laptop: ~/5sem/ticketsdarkfun@laptop:~/5sem/tickets$ script/generate migration add_plane_unit_places[C[1Pe_unit_places[1Pe_unit_places[1Pe_unit_places[1Pe_unit_placesbe_unit_placesue_unit_placesse_unit_places
+      exists  db/migrate
+      create  db/migrate/20101130004902_add_buse_unit_places.rb
+]0;darkfun@laptop: ~/5sem/ticketsdarkfun@laptop:~/5sem/tickets$ script/generate migration add_buse_unit_places[C[1P_unit_places
+      exists  db/migrate
