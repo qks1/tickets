@@ -1,0 +1,18 @@
+<h1>Рейс <%= @route.number %>, <%= date_format(@date.date) %></h1>
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
+<table>
+  <% form_tag :action => 'add_plane_commit' do %>
+  <%= hidden_field_tag('date', @date.id)  %>
+  <%= hidden_field_tag('route', @route.id)  %>
+  <tr>
+    <th>Модель самолёта:</th>
+    <td><%= units_list('plane[id]', 0) %></td>
+  </tr>
+  <tr>
+    <td><%= submit_tag 'Добавить' %></td>
+  <% end %>
+    <td><%= button_to 'Отмена', :action => 'view_plane_places', :date => @date.id, :route => @route.id %></td>
+  </tr>
+</table> 
+<%= link_to 'К списку маршрутов', :action => 'list' %></td><br />
+<%= link_to 'На главную', :controller => 'main' %></td>

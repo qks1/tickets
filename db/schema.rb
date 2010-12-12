@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101130161806) do
+ActiveRecord::Schema.define(:version => 20101212224519) do
+
+  create_table "bus_date_places", :force => true do |t|
+    t.integer  "route_date_id", :null => false
+    t.integer  "place_num",     :null => false
+    t.boolean  "purchased",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bus_unit_places", :force => true do |t|
     t.integer  "unit_id",    :null => false
@@ -25,6 +33,15 @@ ActiveRecord::Schema.define(:version => 20101130161806) do
     t.text     "patronic"
     t.datetime "birth_date"
     t.boolean  "banned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plane_date_places", :force => true do |t|
+    t.integer  "route_date_id", :null => false
+    t.integer  "place_num",     :null => false
+    t.integer  "category",      :null => false
+    t.boolean  "purchased",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,6 +98,16 @@ ActiveRecord::Schema.define(:version => 20101130161806) do
     t.text     "name",       :null => false
     t.text     "city",       :null => false
     t.integer  "transport",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "train_date_places", :force => true do |t|
+    t.integer  "route_date_id", :null => false
+    t.integer  "wagon_number",  :null => false
+    t.integer  "place_num",     :null => false
+    t.integer  "category",      :null => false
+    t.boolean  "purchased",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

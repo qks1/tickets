@@ -2,6 +2,8 @@
 module ApplicationHelper
 
   $kinds = ['Самолёт', 'Поезд', 'Автобус', 'Пароход']
+  $categories = [['Эконом-класс', 'Бизнес-класс', 'Первый класс'],['Плацкарт нижнее небоковое', 'Плацкарт верхнее небоковое', 'Плацкарт нижнее боковое', 'Плацкарт верхнее боковое', 'Сидячее', 'Купе нижнее', 'Купе верхнее', 'Люкс']]
+  
 
   def show_errors(errors)
     return '' if errors.size == 0
@@ -31,6 +33,12 @@ module ApplicationHelper
     ss = []
     Station.find(:all, :conditions => "transport = #{transport}").each{|i| ss << [i.name, i.id]}
     select_tag(field, options_for_select(ss))
+  end
+
+  def units_list(field, transport)
+    ws = []
+    Unit.find(:all, :conditions => "transport = #{transport}").each{|i| ws << [i.description, i.id]}
+    select_tag(field, options_for_select(ws))
   end
     
 end

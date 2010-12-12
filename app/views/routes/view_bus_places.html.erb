@@ -1,0 +1,24 @@
+<h1>Места в автобусе <%= @route.number %> на <%= date_format(@date.date) %></h1>
+<% if @places.size > 0 %>
+  <p>Всего мест: <%= @places.size %>
+<% else %>
+  <%= button_to 'Указать модель автобуса', :action => 'add_bus', :date => @date.id, :route => @route.id %>
+<% end %>
+<table>
+    <tr>
+      <th>Номер места</th>
+      <th>Куплено?</th>
+    </tr>
+  <% for p in @places %>
+    <tr>
+      <td><%= p.place_num %></td>
+      <td><%= purchased(p.purchased) %></td>
+      <% if p.purchased == false %>
+      <td><%= button_to 'Купить', :action => 'buy_place', :id => p.id, :route_id => @route.id, :date_id => @date.id %>
+      <% end %>
+    </tr>
+  <% end %>  
+</table>
+<%= link_to 'Назад', :action => 'view', :id => @route.id %><br />
+<%= link_to 'К списку маршрутов', :action => 'list' %><br />
+<%= link_to 'На главную', :controller => 'main' %>

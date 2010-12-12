@@ -4,11 +4,11 @@
 <table>
   <tr>
     <th>Время прибытия:</th>
-    <td><%= text_field_tag('route_station[arr_time]', "#{@item.arr_time}", :size => 6) %></td>
+    <td>День: <%= text_field_tag('route_station[arr_day]', "#{@item.arr_day}", :size => 2) %> Часы: <%= text_field_tag('route_station[arr_hour]', "#{@item.arr_hour}", :size => 2) %> Минуты: <%= text_field_tag('route_station[arr_minute]', "#{@item.arr_minute}", :size => 2) %></td>
   </tr>
   <tr>
     <th>Время отправления:</th>
-    <td><%= text_field_tag('route_station[dep_time]', "#{@item.dep_time}", :size => 6) %></td>
+    <td>День: <%= text_field_tag('route_station[dep_day]', "#{@item.dep_day}", :size => 2) %> Часы: <%= text_field_tag('route_station[dep_hour]', "#{@item.dep_hour}", :size => 2) %> Минуты: <%= text_field_tag('route_station[dep_minute]', "#{@item.dep_minute}", :size => 2) %></td>
   </tr>
   </tr><td><%= submit_tag 'Сохранить изменения' %></td>
       <% end %>

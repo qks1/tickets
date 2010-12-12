@@ -29,4 +29,8 @@ module RoutesHelper
     dates.size == 0 ? 'Нет данных' : dates.map{|d| d = date_format(d.date)}.join(', ') + '.'
   end
   
+  def purchased(p)
+    p == true ? 'Куплено' : 'Свободно'
+  end
+  
 end

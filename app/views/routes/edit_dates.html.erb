@@ -4,6 +4,7 @@
     <tr>
       <td><%= date_format(d.date) %></td>
       <td><%= button_to 'Удалить', :action => 'delete_date', :id => d.id, :route_id => @route.id %>
+      <td><%= button_to 'Места', :action => 'view_places', :id => d.id, :route_id => @route.id %>
     </tr>
   <% end %>  
 </table>

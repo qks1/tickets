@@ -1,0 +1,26 @@
+<h1>Места в самолёте <%= @route.number %> на <%= date_format(@date.date) %></h1>
+<% if @places.size > 0 %>
+  <%= get_categories_places_total(@places, 0) %>
+<% else %>
+  <%= button_to 'Указать модель самолёта', :action => 'add_plane', :date => @date.id, :route => @route.id %>
+<% end %>
+<table>
+    <tr>
+      <th>Номер места</th>
+      <th>Категория</th>
+      <th>Куплено?</th>
+    </tr>
+  <% for p in @places %>
+    <tr>
+      <td><%= p.place_num %></td>
+      <td><%= get_category(p.category, 0) %></td>
+      <td><%= purchased(p.purchased) %></td>
+      <% if p.purchased == false %>
+      <td><%= button_to 'Купить', :action => 'buy_place', :id => p.id, :route_id => @route.id, :date_id => @date.id %>
+      <% end %>
+    </tr>
+  <% end %>  
+</table>
+<%= link_to 'Назад', :action => 'view', :id => @route.id %><br />
+<%= link_to 'К списку маршрутов', :action => 'list' %><br />
+<%= link_to 'На главную', :controller => 'main' %>

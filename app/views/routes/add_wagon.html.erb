@@ -1,0 +1,22 @@
+<h1>Добавление вагона к поезду <%= @route.number %> на <%= date_format(@date.date) %></h1>
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
+<table>
+  <% form_tag :action => 'add_wagon_commit' do %>
+  <%= hidden_field_tag('date', @date.id)  %>
+  <%= hidden_field_tag('route', @route.id)  %>
+  <tr>
+    <th>Категория вагона:</th>
+    <td><%= units_list('wagon[id]', 1) %></td>
+  </tr>
+  <tr>
+    <th>Номер вагона:</th>
+    <td><%= text_field_tag('wagon[number]', '') %></td>
+  </tr>
+  <tr>
+    <td><%= submit_tag 'Добавить' %></td>
+  <% end %>
+    <td><%= button_to 'Отмена', :action => 'view_train_places', :date => @date.id, :route => @route.id %></td>
+  </tr>
+</table> 
+<%= link_to 'К списку маршрутов', :action => 'list' %></td><br />
+<%= link_to 'На главную', :controller => 'main' %></td>

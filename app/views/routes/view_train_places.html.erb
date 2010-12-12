@@ -1,0 +1,25 @@
+<h1>Места в поезде <%= @route.number %> на <%= date_format(@date.date) %></h1>
+<%= get_categories_places_total(@places, 1) %>
+<%= button_to 'Добавить вагон', :action => 'add_wagon', :date => @date.id, :route => @route.id %>
+<table>
+    <tr>
+      <th>Номер вагона</th>
+      <th>Номер места</th>
+      <th>Категория</th>
+      <th>Куплено?</th>
+    </tr>
+  <% for p in @places %>
+    <tr>
+      <td><%= p.wagon_number %></td>
+      <td><%= p.place_num %></td>
+      <td><%= get_category(p.category, 1) %></td>
+      <td><%= purchased(p.purchased) %></td>
+      <% if p.purchased == false %>
+      <td><%= button_to 'Купить', :action => 'buy_place', :id => p.id, :route_id => @route.id, :date_id => @date.id %>
+      <% end %>
+    </tr>
+  <% end %>  
+</table>
+<%= link_to 'Назад', :action => 'view', :id => @route.id %><br />
+<%= link_to 'К списку маршрутов', :action => 'list' %><br />
+<%= link_to 'На главную', :controller => 'main' %>

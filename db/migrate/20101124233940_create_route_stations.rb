@@ -20,7 +20,7 @@ class CreateRouteStations < ActiveRecord::Migration
     RouteStation.create(:route_id => 2, :station_id => 11, :arr_day => 0, :arr_hour => 15, :arr_minute => 0, :dep_day => 0, :dep_hour => 15, :dep_minute => 25)
     RouteStation.create(:route_id => 2, :station_id => 12, :arr_day => 0, :arr_hour => 19, :arr_minute => 0, :dep_day => 0, :dep_hour => 19, :dep_minute => 0)
     RouteStation.create(:route_id => 3, :station_id => 5, :arr_day => 0, :arr_hour => 23, :arr_minute => 0, :dep_day => 0, :dep_hour => 23, :dep_minute => 0)
-    RouteStation.create(:route_id => 3, :station_id => 8, :arr_day => 0, :arr_hour => 7, :arr_minute => 0, :dep_day => 0, :dep_hour => 7, :dep_minute => 0)
+    RouteStation.create(:route_id => 3, :station_id => 8, :arr_day => 1, :arr_hour => 7, :arr_minute => 0, :dep_day => 1, :dep_hour => 7, :dep_minute => 0)
     RouteStation.create(:route_id => 4, :station_id => 1, :arr_day => 0, :arr_hour => 12, :arr_minute => 0, :dep_day => 0, :dep_hour => 12, :dep_minute => 0)
     RouteStation.create(:route_id => 4, :station_id => 3, :arr_day => 0, :arr_hour => 14, :arr_minute => 0, :dep_day => 0, :dep_hour => 14, :dep_minute => 0)
     RouteStation.create(:route_id => 5, :station_id => 2, :arr_day => 0, :arr_hour => 16, :arr_minute => 0, :dep_day => 0, :dep_hour => 16, :dep_minute => 0)

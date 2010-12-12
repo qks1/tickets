@@ -5,4 +5,7 @@ class RouteDate < ActiveRecord::Base
     :message => 'Должна быть указана дата'
     
     belongs_to :route
+    has_many :train_date_places
+    has_many :plane_date_places
+    has_many :bus_date_places
 end
