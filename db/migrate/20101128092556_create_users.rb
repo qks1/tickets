@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.column :password, :text
 			t.column :email, :text
 			t.column :created_at, :datetime
-			t.column :type, :integer
+			t.column :typ, :text
       t.timestamps
     end
 

@@ -1,13 +1,13 @@
 <h1>Авторизация</h1>
-<%= show_errors(params['error']) unless params['error'].nil? %>
+<%= show_errors(params[:error]) unless params['error'].nil? %>
 <%= show_errors(params['message']) unless params['message'].nil? %>
 <table>
-  <% form_tag :action => 'login' do %>
+  <% form_tag :action => 'login_commit' do %>
   <tr><td><h4>login:</h4></td>
-      <td><%= text_field_tag('params[username]', '', :size => 32) %></td>
+      <td><%= text_field_tag('user[username]', '', :size => 32) %></td>
   </tr>
   <tr><td><h4>pass:</h4></td>
-      <td><%= password_field_tag('params[password]', '', :size => 32) %></td>
+      <td><%= password_field_tag('user[password]', '', :size => 32) %></td>
   </tr>
   <tr><td><%= submit_tag 'Login' %></td>
   <% end %>

@@ -9,11 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101130004907) do
+ActiveRecord::Schema.define(:version => 20101130161806) do
 
   create_table "bus_unit_places", :force => true do |t|
     t.integer  "unit_id",    :null => false
     t.integer  "number",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clients", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "surname"
+    t.text     "name"
+    t.text     "patronic"
+    t.datetime "birth_date"
+    t.boolean  "banned"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,7 +98,7 @@ ActiveRecord::Schema.define(:version => 20101130004907) do
     t.text     "password"
     t.text     "email"
     t.datetime "created_at"
-    t.integer  "type"
+    t.text     "typ"
     t.datetime "updated_at"
   end
 

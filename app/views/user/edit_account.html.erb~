@@ -1,0 +1,17 @@
+<h1>Редактирование информации пользователя</h1>
+<%= show_errors(params[:error]) unless params[:error].nil?%>
+<table>
+	<% form_tag :action => 'edit_account' do %>
+  <tr><td><h4>Имя:</h4></td>
+      <td><%= text_field_tag('client[name]', "", :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Фамилия:</h4></td>
+      <td><%= text_field_tag('client[surname]', "", :size => 32) %></td>
+  </tr>
+  <tr><td><h4>Отчество:</h4></td>
+      <td><%= text_field_tag('client[patronic]', "", :size => 32) %></td>
+  </tr>
+  <tr><td><%= submit_tag 'Сохранить изменения' %></td>
+  <% end %>
+  </tr>
+</table>

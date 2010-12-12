@@ -1,7 +1,7 @@
 <h1>Регистрация</h1>
 <%= show_errors(params['error']) unless params['error'].nil? %>
 <table>
-  <% form_tag :action => 'registration' do %>
+  <% form_tag :action => 'registration_commit' do %>
   <tr><td><h4>username:</h4></td>
       <td><%= text_field_tag('user[username]', '', :size => 32) %></td>
   </tr>

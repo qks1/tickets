@@ -11,7 +11,6 @@
   <tr><td><h4>email:</h4></td>
       <td><%= text_field_tag('user[email]', '', :size => 32) %></td>
   </tr>
-	<% user[created_at] = Time.now %>
   <tr><td><%= submit_tag 'Регистрация' %></td>
   <% end %>
   </tr>

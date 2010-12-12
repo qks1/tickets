@@ -11,7 +11,8 @@ class Provider < ActiveRecord::Base
     :message => 'Должен быть указан адрес электронной почты'
     
   has_many :routes
-    
+	belongs_to :user, :dependent => :destroy
+
   def before_validation()
     self.attribute_names.each do |n|
       self[n] = self[n].strip if self[n].kind_of?(String)

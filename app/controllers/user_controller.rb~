@@ -44,7 +44,7 @@ class UserController < ApplicationController
   def logout
     session[:user] = nil
     params[:message] = 'Logged out'
-    redirect_to :controller => "main", :action => "index"
+    redirect_to :action => 'login'
   end
 
 	def my_account

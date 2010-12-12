@@ -1,7 +1,7 @@
 class CreateProviders < ActiveRecord::Migration
   def self.up
     create_table :providers do |t|
-			##t.references	:user
+			t.references	:user
       t.column :company_name, :text, :null => false
       t.column :jur_address, :text, :null => false
       t.column :fact_address, :text, :null => false

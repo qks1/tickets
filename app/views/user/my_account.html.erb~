@@ -1,2 +1,16 @@
 <h1>My account</h1>
-<%= @user.username%>
+<%= "Username: " + @user.username%>
+<br>
+<%= "Account created at " + "#{@user.created_at}"%>
+<br>
+<%= @user.provider.nil? %>
+<br>
+
+<br>
+<% if !@user.client.nil? %>
+	<%= "Name = " + @user.client.name %><br>
+	<%= "Surname = " + @user.client.surname %><br>
+	<%= "Patronic = " + @user.client.patronic %><br>
+<%else%>
+	<h1>client is nil<h1>
+<% end %>
