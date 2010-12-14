@@ -10,6 +10,7 @@ class Station < ActiveRecord::Base
     :message => 'Возможно только 4 вида транспорта'
     
   has_many :route_stations
+  has_and_belongs_to_many :tickets
 
   def before_validation()
     self.attribute_names.each do |n|

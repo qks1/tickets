@@ -1,0 +1,16 @@
+<h1>Маршруты</h1>
+<table>
+  <tr>
+    <th>Перевозчик</th>
+    <th>Номер</th>
+    <th>Вид транспорта</th>
+    <th>Маршрут следования</th>
+  </tr>
+  <% for item in @routes %>
+  <tr>
+    <td><%= item %></td>
+  </tr>
+  <% end %>
+</table>
+<p><%= link_to 'Возврат к поиску', :controller => 'ticket', :action => 'search' %>
+<p><%= link_to 'На главную', :controller => 'main' %></p>
