@@ -13,7 +13,7 @@ module ApplicationHelper
     return result
   end
   
-  def get_transport(tr_id)    
+  def get_kind(tr_id)    
     $kinds[tr_id]
   end
 

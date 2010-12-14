@@ -8,4 +8,7 @@ class RouteDate < ActiveRecord::Base
     has_many :train_date_places
     has_many :plane_date_places
     has_many :bus_date_places
+    has_many :train_prices
+    has_many :plane_prices
+    has_many :bus_prices
 end

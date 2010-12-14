@@ -4,7 +4,7 @@
   <tr>
     <td><%= item.name %></td>
     <td><%= item.city %></td>
-    <td><%= get_transport(item.transport) %></td>
+    <td><%= get_kind(item.transport) %></td>
     <td><%= button_to 'Редактировать', :action => 'edit', :id => item.id %></td>
     <td><%= button_to 'Удалить из базы', :action => 'destroy', :id => item.id %></td>
   </tr>

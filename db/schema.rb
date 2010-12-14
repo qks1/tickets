@@ -9,12 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101212224519) do
+ActiveRecord::Schema.define(:version => 20101213121733) do
 
   create_table "bus_date_places", :force => true do |t|
     t.integer  "route_date_id", :null => false
     t.integer  "place_num",     :null => false
     t.boolean  "purchased",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bus_prices", :force => true do |t|
+    t.integer  "route_date_id", :null => false
+    t.integer  "price",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +49,14 @@ ActiveRecord::Schema.define(:version => 20101212224519) do
     t.integer  "place_num",     :null => false
     t.integer  "category",      :null => false
     t.boolean  "purchased",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plane_prices", :force => true do |t|
+    t.integer  "route_date_id", :null => false
+    t.integer  "category_id",   :null => false
+    t.integer  "price",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -108,6 +123,14 @@ ActiveRecord::Schema.define(:version => 20101212224519) do
     t.integer  "place_num",     :null => false
     t.integer  "category",      :null => false
     t.boolean  "purchased",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "train_prices", :force => true do |t|
+    t.integer  "route_date_id", :null => false
+    t.integer  "category_id",   :null => false
+    t.integer  "price",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

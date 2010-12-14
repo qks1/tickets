@@ -167,5 +167,26 @@ class RoutesController < ApplicationController
     end
     redirect_to(:action => 'view_bus_places', :route => params[:route], :date => params[:date])
   end
+  
+  def edit_prices
+    @date = RouteDate.find(params[:date])
+    @route = Route.find(params[:route])
+  end
+  
+  def edit_prices_commit
+    @route = Route.find(params[:route])
+    if @route.transport == 0
+      tp = PlanePrice.new  
+    elsif @route.transport == 1
+      tp = TrainPrice.new
+    else
+      tp = BusPrice.new
+    end
+    tp.attributes = params['unit']
+    tp.save
+    redirect_to :action => 'view_places', :id => params['unit']['route_date_id'], :route_id => params[:route]
+  end
+  
+
 
 end

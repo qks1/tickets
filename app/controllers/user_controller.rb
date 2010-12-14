@@ -28,16 +28,18 @@ class UserController < ApplicationController
 	end
 
 	def registration_commit
-		@user=User.new(params[:user])
-		@user.created_at = Time.now
-		@user.typ = 'Client'
-		@user.client = Client.new
-		if @user.save
-			session[:user] = User.authenticate(@user.username, @user.password)
+		user=User.new(params[:user])
+		user.created_at = Time.now
+		user.typ = 'Client'
+		user.client = Client.new
+		if user.save
+			session[:user] = User.authenticate(user.username, user.password)
 			redirect_to :action => "my_account"
 		else
-			params[:error] = 'Registration was not successful'
-			redirect_to :controller => "main", :action => "index"
+			
+			#params[:errors] = 'Registration was not successful'
+			get_errors(user)
+			redirect_to  :action => "registration"
 		end
 	end
 

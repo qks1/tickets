@@ -1,5 +1,5 @@
 <h1>Регистрация</h1>
-<%= show_errors(params['error']) unless params['error'].nil? %>
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
 <table>
   <% form_tag :action => 'registration_commit' do %>
   <tr><td><h4>username:</h4></td>

@@ -1,4 +1,5 @@
 <h1>Добро пожаловать <%= session[:user].username unless session[:user].nil? %>!</h1>
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
 <p>Список возможностей</p>
 <p><%= link_to 'Список станций', :controller => 'stations', :action => 'list' %>
 <p><%= link_to 'Список поставщиков', :controller => 'providers', :action => 'list' %>
