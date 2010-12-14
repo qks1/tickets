@@ -10,5 +10,5 @@
 <% if !session[:user].nil? %>
 <p><%= link_to 'Профиль', :controller => 'user', :action => 'my_account' %>
 <p><%= link_to 'Менять данные', :controller => 'user', :action => 'edit_account' %>
-<% end %>
 <p><%= link_to 'Выход', :controller => 'user', :action => 'logout' %>
+<% end %>

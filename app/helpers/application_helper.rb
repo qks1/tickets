@@ -3,7 +3,7 @@ module ApplicationHelper
 
   $kinds = ['Самолёт', 'Поезд', 'Автобус', 'Пароход']
   $categories = [['Эконом-класс', 'Бизнес-класс', 'Первый класс'],['Плацкарт нижнее небоковое', 'Плацкарт верхнее небоковое', 'Плацкарт нижнее боковое', 'Плацкарт верхнее боковое', 'Сидячее', 'Купе нижнее', 'Купе верхнее', 'Люкс']]
-  
+  @t=[]
 
   def show_errors(errors)
     return '' if errors.size == 0
@@ -40,5 +40,17 @@ module ApplicationHelper
     Unit.find(:all, :conditions => "transport = #{transport}").each{|i| ws << [i.description, i.id]}
     select_tag(field, options_for_select(ws))
   end
-    
+
+  def city_stations_list(field)
+    ss = []
+    Station.find(:all).each{|i| ss << [i.city, i.id]}
+    select_tag(field, options_for_select(ss))
+  end
+
+  def all_stations_list(field)
+    ss = []
+    Station.find(:all).each{|i| ss << [i.name, i.id]}
+    select_tag(field, options_for_select(ss))
+  end
+  
 end

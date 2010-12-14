@@ -1,0 +1,31 @@
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
+<% form_tag :action => 'list_route' do %>
+<table>
+ <tr>
+    <th>Транспорт:</th>
+    <% for i in 0...$kinds.size %>
+    </tr>  
+ <tr>
+    <td><%= $kinds[i] %>:</td>
+    <td><%=  check_box_tag('@transport[i]', i, false)%></td>
+ </tr>
+    <% end %>
+</table>
+<table>
+  <tr>
+    <th>Пункт отправления:</th>
+    <td><%= all_stations_list('ticket[id_station_trucking]') %></td>
+  </tr>
+  <tr>
+    <th>Пункт прибытия:</th>
+    <td><%= all_stations_list('ticket[id_station_arrival]') %></td>
+  </tr>
+  <tr>
+    <th>Дата отправления:</th>
+    <td><%= date_select('ticket[date_trucking]', :date, :order => [:day, :month, :year]) %></td>
+  </tr>
+  <tr><td><%= submit_tag 'Поиск' %></td>
+      <% end %>
+  </tr>  
+</table>
+
