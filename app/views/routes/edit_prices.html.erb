@@ -1,0 +1,24 @@
+<h1>Цены на билеты на маршруте <%= @route.number %> на <%= date_format(@date.date) %></h1>
+<% form_tag :action => 'edit_prices_commit' do %>
+<%= hidden_field_tag('unit[route_date_id]', @date.id)  %>
+<%= hidden_field_tag('route', @route.id)  %>
+<table>
+  <% if @route.transport != 2 %>
+  <tr>
+    <th>Категория:</th>
+    <td><%= units_list('unit[category_id]', @route.transport) %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <th>Цена:</th>
+    <td><%= text_field_tag('unit[price]', '', :size => 5) %></td>
+  </tr>
+  <tr>
+    <td><%= submit_tag 'Сохранить' %></td>
+  <% end %>
+    <td><%= button_to 'Отмена', :action => 'view_places', :date => @date.id, :route => @route.id %>
+  </tr>
+</table>
+<%= link_to 'Назад', :action => 'view', :id => @route.id %><br />
+<%= link_to 'К списку маршрутов', :action => 'list' %><br />
+<%= link_to 'На главную', :controller => 'main' %>
