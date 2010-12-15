@@ -3,27 +3,27 @@
 <table>
  <tr>
     <th>Транспорт:</th>
-    <% for i in 0...$kinds.size %>
-    </tr>  
+ </tr>
  <tr>
-    <td><%= $kinds[i] %>:</td>
-    <td><%=  check_box_tag('@transport[i]', i, false)%></td>
+    <% i=0 %>
+    <% $kinds.each do |e| %>   
+    <td><%= e %>:</td>
+    <td><%= check_box_tag('ticket[transports][]', i, false, :id=>nil) %></td>
+    <% i+=1 %>
  </tr>
     <% end %>
 </table>
 <table>
   <tr>
     <th>Пункт отправления:</th>
-    <td><%= all_stations_list('ticket[id_station_trucking]') %></td>
+    <td><%= city_stations_list('ticket[city_station_trucking]', 'ticket[transport]') %></td>
   </tr>
   <tr>
     <th>Пункт прибытия:</th>
-    <td><%= all_stations_list('ticket[id_station_arrival]') %></td>
+    <td><%= city_stations_list('ticket[city_station_arrival]', 'ticket[transport]') %></td>
   </tr>
-  <tr>
-    <th>Дата отправления:</th>
-    <td><%= date_select('ticket', :date_trucking, :order => [:day, :month, :year]) %></td>
-  </tr>
+</table>
+<table>
   <tr><td><%= submit_tag 'Поиск' %></td>
       <% end %>
   </tr>  

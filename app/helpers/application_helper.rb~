@@ -41,9 +41,15 @@ module ApplicationHelper
     select_tag(field, options_for_select(ws))
   end
 
- def city_stations_list(field, transport)
+  def city_stations_list(field)
     ss = []
-    Station.find(:all, :group => 'city').each{|i| ss << [i.city]}
+    Station.find(:all).each{|i| ss << [i.city, i.id]}
+    select_tag(field, options_for_select(ss))
+  end
+
+  def all_stations_list(field)
+    ss = []
+    Station.find(:all).each{|i| ss << [i.name, i.id]}
     select_tag(field, options_for_select(ss))
   end
   
