@@ -41,10 +41,11 @@ module ApplicationHelper
     select_tag(field, options_for_select(ws))
   end
 
-  def city_stations_list(field)
-    ss = []
-    Station.find(:all).each{|i| ss << [i.city, i.id]}
-    select_tag(field, options_for_select(ss))
+  def cities_list(field)
+    cs = []
+    Station.find(:all).each{|i| cs << i.city}
+    cs = cs.uniq.sort.each{|i| i = [i, i]}
+    select_tag(field, options_for_select(cs))
   end
 
   def all_stations_list(field)

@@ -14,11 +14,11 @@
 <table>
   <tr>
     <th>Пункт отправления:</th>
-    <td><%= all_stations_list('ticket[id_station_trucking]') %></td>
+    <td><%= cities_list('ticket[departure_city]') %></td>
   </tr>
   <tr>
     <th>Пункт прибытия:</th>
-    <td><%= all_stations_list('ticket[id_station_arrival]') %></td>
+    <td><%= cities_list('ticket[arrival_city]') %></td>
   </tr>
   <tr>
     <th>Дата отправления:</th>
