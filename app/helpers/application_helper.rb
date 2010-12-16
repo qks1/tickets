@@ -41,7 +41,6 @@ module ApplicationHelper
     select_tag(field, options_for_select(ws))
   end
 
-<<<<<<< HEAD
   def cities_list(field)
     cs = []
     Station.find(:all).each{|i| cs << i.city}
@@ -52,11 +51,12 @@ module ApplicationHelper
   def all_stations_list(field)
     ss = []
     Station.find(:all).each{|i| ss << [i.name, i.id]}
-=======
+        select_tag(field, options_for_select(ss))
+  end
+
  def city_stations_list(field, transport)
     ss = []
     Station.find(:all, :group => 'city').each{|i| ss << [i.city]}
->>>>>>> 0305a3bb0d5b93250dcece01fa44fc2aa2c85950
     select_tag(field, options_for_select(ss))
   end
   

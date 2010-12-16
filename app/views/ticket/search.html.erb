@@ -22,6 +22,10 @@
     <th>Пункт прибытия:</th>
     <td><%= city_stations_list('ticket[city_station_arrival]', 'ticket[transport]') %></td>
   </tr>
+  <tr>
+    <th>Дата:</th>
+    <td><%= date_select 'ticket', :date, :order => [:day, :month, :year] %></td>
+  </tr>
 </table>
 <table>
   <tr><td><%= submit_tag 'Поиск' %></td>
