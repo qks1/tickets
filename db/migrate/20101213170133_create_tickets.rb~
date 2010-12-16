@@ -1,10 +1,10 @@
 class CreateTickets < ActiveRecord::Migration
   def self.up
     create_table :tickets do |t|
-      t.column :id_station_tracking :integer, :null => false
-      t.column :id_sattion_arrival :integer, :null => false
-      t.column :date, :date
-      t.column :transports[], :integer
+      t.column :city_station_tracking, :string, :null => false
+      t.column :city_sattion_arrival, :string, :null => false
+      t.column :date, :string
+      t.column :transport, :string
       t.column :route_id, :integer
       t.timestamps
     end

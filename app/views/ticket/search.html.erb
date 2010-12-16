@@ -1,3 +1,4 @@
+<h1>Поиск</h1>
 <%= show_errors(params['errors']) unless params['errors'].nil? %>
 <% form_tag :action => 'list_route' do %>
 <table>
@@ -32,4 +33,5 @@
       <% end %>
   </tr>  
 </table>
+<p><%= link_to 'На главную', :controller => 'main' %></p>
 
