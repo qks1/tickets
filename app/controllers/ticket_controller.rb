@@ -45,7 +45,13 @@ class TicketController < ApplicationController
                  (RouteStation.find(:all, :conditions => "station_id in (" << @station_arrival).map{|i| i = i.route_id})).map{|i| i = Route.find(i)}
        match_time() 
     end
-    @routes = Route.find(:all, :conditions => "id in (" << @routes_id.join(', ') << ')')
+    @routes = Route.find(:all, :conditions => "id in (" << @routes_id.join(', ') << ')', :order => 'transport, number')
      
+  end
+
+  def view
+    @item = Route.find(params[:id])
+    @stations = RouteStation.find(:all, :conditions => "route_id = #{params[:id]}", :order => 'dep_day, dep_hour')
+    @dates = RouteDate.find(:all, :conditions => "route_id = #{params[:id]}", :order => 'date')
   end
 end

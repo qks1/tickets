@@ -1,18 +1,28 @@
-<h1>Маршруты</h1>
+<h1>Выбор маршрута</h1>
 <table>
   <tr>
+    <th>Вид транспорта</th>
     <th>Перевозчик</th>
     <th>Номер</th>
-    <th>Вид транспорта</th>
     <th>Маршрут следования</th>
+    <th>Пункт оправления</th>
+    <th>Время оправления</th>
+    <th>Пункт прибытия</th>
+    <th>Время прибытия</th>
+    <th>Выбор даты отправления</th>
   </tr>
   <% for item in @routes %>
   <tr>
+    <td><%= get_kind(item.transport) %></td>
     <td><%= item.provider.company_name %></td>
     <td><%= item.number %></td>
-    <td><%= get_transport(item.transport) %></td>
-    <td><%= arr_and_dep(item.id, 'city') %></td>
-    <td><%= button_to 'Просмотр маршрута', :action => 'view', :id => item.id %></td>
+    <td><%= button_to 'Просмотр маршрута', :action => 'view', :id => item.id  %></td>
+    <td><%= t_station(item.id, @station_trucking) %></td>
+    <td><%= t_dep_time(item.id, @station_trucking) %></td>
+    <td><%= t_station(item.id, @station_arrival) %></td>
+    <td><%= t_arr_time(item.id, @station_arrival) %></td>
+    <td><%= t_dates_list('ticket[date]', item.id) %></td>
+    <td><%= button_to 'Заказать', :action => 'list', :id => item.id %></td>
   </tr>
   <% end %>
 </table>

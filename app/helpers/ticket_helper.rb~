@@ -1,0 +1,37 @@
+module TicketHelper
+
+def t_station(route_id, station)
+    array = RouteStation.find(:all, :conditions => "route_id = #{route_id} and station_id in (" << station)
+    as = array.pop
+    as.nil? ? 'Неизвестно' : as.station.name
+end
+
+def t_dep_time(route_id, station_trucking)
+    array = RouteStation.find(:all, :conditions => "route_id = #{route_id} and station_id in (" << station_trucking)
+    elem = array.pop
+    as = time_to_string(elem.dep_day, elem.dep_hour, elem.dep_minute)
+    as.size == 0 ? 'Неизвестно' : as
+end
+
+def t_arr_time(route_id, station_arrival)
+    array = RouteStation.find(:all, :conditions => "route_id = #{route_id} and station_id in (" << station_arrival)
+    elem = array.pop
+    as = time_to_string(elem.arr_day, elem.arr_hour, elem.arr_minute)
+    as.size == 0 ? 'Неизвестно' : as
+end
+
+def t_dates_list(field, route_id)
+    dates = RouteDate.find(:all, :conditions => "route_id = #{route_id}", :order => 'date')
+    dat = []
+    dat = dates.map{|d| d = date_format(d.date)}
+    select_tag(field, options_for_select(dat))
+end
+
+def t_route(arr, route_id)
+    array = RouteStation.find(:all, :conditions => "route_id = #{route_id}", :order => 'dep_day, dep_hour, dep_minute')
+    array.each do |i|
+      arr << i.station.name << time_to_string(i.dep_day, i.dep_hour, i.dep_minute) << time_to_string(i.arr_day, i.arr_hour, i.arr_minute) << ' \n '
+    end
+    return arr
+end
+end
