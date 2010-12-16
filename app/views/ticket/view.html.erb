@@ -13,3 +13,4 @@
   </tr>
   <% end %>
 </table>
+<%= button_to 'Назад', :action => 'list_route', :ticket => {:transports => @transports, :city_station_trucking => @city_trucking, :city_station_arrival => @city_arrival} %>

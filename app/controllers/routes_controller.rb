@@ -49,6 +49,7 @@ class RoutesController < ApplicationController
     rs = RouteStation.find(params['route_station']['id'])
     unless rs.nil?
       rs.attributes = params['route_station']
+      rs.percents /= 100
       rs.save
     end
     redirect_to(:action => 'view', :id => params['route_station']['route_id'])
@@ -62,6 +63,7 @@ class RoutesController < ApplicationController
   def add_station_commit
     rs = RouteStation.new
     rs.attributes = params['route_station']
+    rs.percents /= 100
     rs.save
     get_errors(rs)
     @errors.size > 0 ? redirect_to(:action => 'add_station', :route_id => params['route_station'][:route_id], :errors => @errors) : redirect_to(:action => 'view', :id => params['route_station'][:route_id])

@@ -16,19 +16,13 @@
     <td><%= get_kind(item.transport) %></td>
     <td><%= item.provider.company_name %></td>
     <td><%= item.number %></td>
-<<<<<<< HEAD
-    <td><%= get_transport(item.transport) %></td>
-    <td><%= arr_and_dep(item.id, 'city') %></td>
-    <td><%= button_to 'Просмотр маршрута', :controller => 'routes', :action => 'view', :id => item.id %></td>
-=======
-    <td><%= button_to 'Просмотр маршрута', :action => 'view', :id => item.id  %></td>
+    <td><%= button_to 'Просмотр маршрута', :action => 'view', :id => item.id, :transports => @transports, :city_trucking => @city_trucking, :city_arrival => @city_arrival  %></td>
     <td><%= t_station(item.id, @station_trucking) %></td>
     <td><%= t_dep_time(item.id, @station_trucking) %></td>
     <td><%= t_station(item.id, @station_arrival) %></td>
     <td><%= t_arr_time(item.id, @station_arrival) %></td>
     <td><%= t_dates_list('ticket[date]', item.id) %></td>
     <td><%= button_to 'Заказать', :action => 'list', :id => item.id %></td>
->>>>>>> 22570c769a07d2c9bf9a0522e633295476913269
   </tr>
   <% end %>
 </table>

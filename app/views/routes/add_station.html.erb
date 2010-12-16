@@ -14,6 +14,10 @@
     <th>Время отправления:</th>
     <td>День: <%= text_field_tag('route_station[dep_day]', '0', :size => 2) %> Часы: <%= text_field_tag('route_station[dep_hour]', '', :size => 2) %> Минуты: <%= text_field_tag('route_station[dep_minute]', '', :size => 2) %></td>
   </tr>
+  <tr>
+    <th>% пути:</th>
+    <td><%= text_field_tag('route_station[percents]', '0', :size => 3) %></td>
+  </tr>
   </tr><td><%= submit_tag 'Сохранить изменения' %></td>
       <% end %>
       <td><%= button_to 'Отмена', :action => 'view', :id => @route_id %></td>

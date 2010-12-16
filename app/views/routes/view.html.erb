@@ -11,12 +11,14 @@
     <th>Станция</th>
     <th>Прибытие</th>
     <th>Отправление</th>
+    <th>Расстояние</th>
   </tr>
   <% for st in @stations %>
   <tr>
     <td><%= st.station.name %></td>
     <td><%= time_to_string(st.arr_day, st.arr_hour.to_s, st.arr_minute.to_s) %></td>
     <td><%= time_to_string(st.dep_day, st.dep_hour.to_s, st.dep_minute.to_s) %></td>
+    <td><%= (st.percents * 100).to_i %>%</td>
     <td><%= button_to 'Редактировать', :action => 'edit_station', :id => st.id, :route_id => @item.id %></td>
     <td><%= button_to 'Удалить из маршрута', :action => 'delete_station', :id => st.id, :route_id => @item.id %></td>
   </tr>
