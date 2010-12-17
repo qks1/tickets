@@ -34,9 +34,14 @@ module RoutesHelper
   end
   
   def find_price(category, date, transport)
-    if transport == 1
-      p = TrainPrice.find(:all, :having => "route_date_id = #{date} and category_id = #{category}").first
+    if transport == 0
+      p = PlanePrice.find(:all, :conditions => "route_date_id = #{date} and category_id = #{category}").first
+    elsif transport == 1
+      p = TrainPrice.find(:all, :conditions => "route_date_id = #{date} and category_id = #{category}").first
+    else
+      p = BusPrice.find(:all, :conditions => "route_date_id = #{date}").first
     end
+    return 0 if p.nil?
     return p.price
   end  
 end

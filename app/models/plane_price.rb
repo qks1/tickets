@@ -1,4 +1,4 @@
-class PlanePrices < ActiveRecord::Base
+class PlanePrice < ActiveRecord::Base
 
   belongs_to :route_date
 end

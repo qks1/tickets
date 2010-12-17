@@ -177,12 +177,15 @@ class RoutesController < ApplicationController
   
   def edit_prices_commit
     @route = Route.find(params[:route])
-    if @route.transport == 0
-      tp = PlanePrice.new  
+    if @route.transport == 0 
+      tp = PlanePrice.find(:all, :conditions => "route_date_id = #{params['unit']['route_date_id']} and category_id = #{params['unit']['category_id']}").first
+      tp = PlanePrice.new if tp.nil?
     elsif @route.transport == 1
-      tp = TrainPrice.new
+      tp = TrainPrice.find(:all, :conditions => "route_date_id = #{params['unit']['route_date_id']} and category_id = #{params['unit']['category_id']}").first
+      tp = TrainPrice.new if tp.nil?
     else
-      tp = BusPrice.new
+      tp = BusPrice.find(:all, :conditions => "route_date_id = #{params['unit']['route_date_id']}").first
+      tp = BusPrice.new if tp.nil?
     end
     tp.attributes = params['unit']
     tp.save

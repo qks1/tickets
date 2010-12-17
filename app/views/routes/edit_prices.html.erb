@@ -6,7 +6,7 @@
   <% if @route.transport != 2 %>
   <tr>
     <th>Категория:</th>
-    <td><%= units_list('unit[category_id]', @route.transport) %></td>
+    <td><%= categories_list('unit[category_id]', @route.transport) %></td>
   </tr>
   <% end %>
   <tr>

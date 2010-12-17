@@ -1,4 +1,4 @@
-class BusPrices < ActiveRecord::Base
+class BusPrice < ActiveRecord::Base
 
   belongs_to :route_date
 end
