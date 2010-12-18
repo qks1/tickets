@@ -10,7 +10,7 @@
   <tr>
     <td><%= item.provider.company_name %></td>
     <td><%= item.number %></td>
-    <td><%= get_transport(item.transport) %></td>
+    <td><%= get_kind(item.transport) %></td>
     <td><%= arr_and_dep(item.id, 'city') %></td>
     <td><%= button_to 'Редактировать информацию', :action => 'edit', :id => item.id %></td>
     <td><%= button_to 'Просмотр маршрута', :action => 'view', :id => item.id %></td>

@@ -1,12 +1,10 @@
-class UserController < ApplicationController
-	before_filter :login_required, :only=>['my_account', 'edit_account', 'destroy']
+lass UserController < ApplicationController
+	before_filter :only_operator, :only=>['list']
 
   def list
     @users = User.find(:all)
   end
 
-
-##--- Login
 	def login
 	end
 
@@ -16,14 +14,12 @@ class UserController < ApplicationController
 			params[:message] = 'Login successful'
 			session[:user] = @user
 			redirect_to_stored
-			#redirect_to :action => "my_account"
 		else
-			params[:error] = 'Login was not successful'
+			params[:errors] = 'Login was not successful'
+			redirect_to :action => 'login', :errors => @errors
 		end
 	end
 
-
-##--- Registration of Client
 	def registration
 	end
 
@@ -34,12 +30,10 @@ class UserController < ApplicationController
 		user.client = Client.new
 		if user.save
 			session[:user] = User.authenticate(user.username, user.password)
-			redirect_to :action => "my_account"
+			redirect_to :controller => user_type, :action => "my_account"
 		else
-			
-			#params[:errors] = 'Registration was not successful'
 			get_errors(user)
-			redirect_to  :action => "registration"
+			redirect_to :action => "registration", :errors => @errors
 		end
 	end
 
@@ -49,40 +43,6 @@ class UserController < ApplicationController
     redirect_to :controller => "main", :action => "index"
   end
 
-	def my_account
-		@user = session[:user]
-	end
-
-	def edit_account
-	end
-
-	def edit_account_commit
-		user = session[:user]
-		if user.typ == 'Client'
-		##----------------------##
-			user.client = Client.new(params[:client])
-			if user.client.save
-				redirect_to :action => "my_account"
-			else
-				params[:error] = 'Did not fit the parameters'
-			end
-		elsif user.typ == 'Provider'
-		##----------------------##			
-			user.provider.attributes = params[:provider]
-			if user.provider.save
-				redirect_to :action => "my_account"
-			else
-				params[:error] = 'Did not fit the parameters'
-			end
-		elsif user.typ == 'Operator'
-		##----------------------##
-				
-		else
-			params[:error] = 'Something went terribly wrong'
-			redirect_to :controller => 'main', :action => 'index'
-		end
-	end
-
   def destroy
     u = User.find(params[:id])
     u.destroy unless u.nil?
@@ -90,3 +50,4 @@ class UserController < ApplicationController
   end
 
 end
+

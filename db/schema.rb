@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20101217165220) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "site"
+    t.integer  "user_id"
   end
 
   create_table "route_dates", :force => true do |t|
@@ -88,17 +89,16 @@ ActiveRecord::Schema.define(:version => 20101217165220) do
   end
 
   create_table "route_stations", :force => true do |t|
-    t.integer  "route_id",                                                  :null => false
-    t.integer  "station_id",                                                :null => false
-    t.integer  "arr_day",                                                   :null => false
-    t.integer  "arr_hour",                                                  :null => false
-    t.integer  "arr_minute",                                                :null => false
-    t.integer  "dep_day",                                                   :null => false
-    t.integer  "dep_hour",                                                  :null => false
-    t.integer  "dep_minute",                                                :null => false
+    t.integer  "route_id",   :null => false
+    t.integer  "station_id", :null => false
+    t.integer  "arr_day",    :null => false
+    t.integer  "arr_hour",   :null => false
+    t.integer  "arr_minute", :null => false
+    t.integer  "dep_day",    :null => false
+    t.integer  "dep_hour",   :null => false
+    t.integer  "dep_minute", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "percents",   :precision => 3, :scale => 2, :default => 0.0, :null => false
   end
 
   create_table "routes", :force => true do |t|

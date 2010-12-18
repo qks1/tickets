@@ -3,6 +3,7 @@
   <% @providers.each do |item| %>
     <tr>
       <td><%= item.company_name %></td>
+      <td><%= item.user_id %></td>
       <td><%= button_to 'Информация', :action => 'info', :id => item.id %></td>
       <td><%= button_to 'Редактировать', :action => 'edit', :id => item.id %></td>
       <td><%= button_to 'Удалить из базы', :action => 'destroy', :id => item.id %></td>
