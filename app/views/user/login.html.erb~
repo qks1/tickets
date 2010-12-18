@@ -1,6 +1,5 @@
 <h1>Авторизация</h1>
-<%= show_errors(params[:error]) unless params['error'].nil? %>
-<%= show_errors(params['message']) unless params['message'].nil? %>
+<%= show_errors(params[:errors]) unless params[:error].nil? %>
 <table>
   <% form_tag :action => 'login_commit' do %>
   <tr><td><h4>login:</h4></td>

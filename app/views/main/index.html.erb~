@@ -1,14 +1,18 @@
 <h1>Добро пожаловать <%= session[:user].username unless session[:user].nil? %>!</h1>
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
 <p>Список возможностей</p>
 <p><%= link_to 'Список станций', :controller => 'stations', :action => 'list' %>
 <p><%= link_to 'Список поставщиков', :controller => 'providers', :action => 'list' %>
 <p><%= link_to 'Список маршрутов', :controller => 'routes', :action => 'list' %>
 <p><%= link_to 'Транспортные средства', :controller => 'units', :action => 'list' %>
+<p><%= link_to 'Поиск', :controller => 'ticket', :action => 'search' %>
+<% if !session[:user].nil? %>
+<% if is_operator? %>
+	<p><%= link_to 'Список пользователей', :controller => 'user', :action => 'list' %>
+<% end %>
+<p><%= link_to 'Профиль', :controller => user_type, :action => 'my_account' %>
+<p><%= link_to 'Выход', :controller => 'user', :action => 'logout' %>
+<% else %>
 <p><%= link_to 'Авторизация', :controller => 'user', :action => 'login' %>
 <p><%= link_to 'Регистрация', :controller => 'user', :action => 'registration' %>
-<p><%= link_to 'Список пользователей', :controller => 'user', :action => 'list' %>
-<% if !session[:user].nil? %>
-<p><%= link_to 'Профиль', :controller => 'user', :action => 'my_account' %>
-<p><%= link_to 'Менять данные', :controller => 'user', :action => 'edit_account' %>
-<p><%= link_to 'Выход', :controller => 'user', :action => 'logout' %>
 <% end %>

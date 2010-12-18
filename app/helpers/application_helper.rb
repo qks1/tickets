@@ -17,6 +17,17 @@ module ApplicationHelper
     $kinds[tr_id]
   end
 
+	def is_operator?
+		unless !session[:user].nil?
+			session[:user].typ == 'Operator' ? true : false
+		end
+		return false
+	end
+
+	def user_type
+		session[:user].typ
+	end
+
   def kinds_list(field, selected = 0)
     ks = []
     $kinds.each_index{|i| ks << [$kinds[i], i]}
@@ -52,12 +63,6 @@ module ApplicationHelper
     ss = []
     Station.find(:all).each{|i| ss << [i.name, i.id]}
         select_tag(field, options_for_select(ss))
-  end
-
- def city_stations_list(field, transport)
-    ss = []
-    Station.find(:all, :group => 'city').each{|i| ss << [i.city]}
-    select_tag(field, options_for_select(ss))
   end
 
   def categories_list(field, transport)

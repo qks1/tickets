@@ -1,0 +1,27 @@
+<h1>Заказ билета на автобус</h1>
+
+<table>
+  <tr>
+    <td>Маршрут:</td> 
+    <td><%= @route.number %></td>
+  </tr>  
+  <tr>
+    <td>Дата отправления:</td> 
+    <td><%= @date_trucking %></td>
+  </tr>  
+   <tr>
+    <td> Место отправления:</td> 
+    <td><%= @station_trucking %></td>
+    <td> Время отправления:</td> 
+    <td><%= @time_trucking %></td>
+  </tr>
+  <tr>
+    <td> Место прибытия:</td> 
+    <td><%= @station_arrival %></td>
+     <td> Время прибытия:</td> 
+    <td><%= @time_arrival %></td>
+  </tr> 
+
+</table> 
+<%= button_to 'Назад', :action => 'list_route', :ticket => {:transports => @transports, :city_station_trucking => @city_trucking, :city_station_arrival => @city_arrival} %>
+<p><%= link_to 'На главную', :controller => 'main' %></p>

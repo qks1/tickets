@@ -23,6 +23,13 @@ class CreateUsers < ActiveRecord::Migration
 								:typ => 'Operator'
 								)
 
+		User.create(:username => 'admin', 
+								:password => 'admin',
+								:email => 'aaa@aaa.aa',
+								:created_at => '13.12.2010',
+								:typ => 'Operator'
+								)
+
 	end
 
   def self.down

@@ -32,6 +32,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+	def only_operator
+		if session[:user].nil?
+			redirect_to :controller => 'main'
+			return false
+		elsif session[:user].typ != 'Operator'
+			redirect_to :controller => 'main'
+			return false
+		end
+		return true
+	end
+
+	def user_type
+		session[:user].typ
+	end
+
   def get_errors(obj)
     @errors = []
     obj.errors.each{|i| @errors << i[1]} if obj.errors.size > 0
