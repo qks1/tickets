@@ -1,4 +1,0 @@
-<h1>Заказ билета на поезд</h1>
-
-<%= button_to 'Назад', :action => 'list_route', :ticket => {:transports => @transports, :city_station_trucking => @city_trucking, :city_station_arrival => @city_arrival} %>
-<p><%= link_to 'На главную', :controller => 'main' %></p>

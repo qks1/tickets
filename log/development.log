@@ -1,0 +1,160 @@
+# Logfile created on Sat Dec 18 21:56:28 +0300 2010  [4;36;1mSQL (1.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStations (20101028202837)
+Migrating to CreateProviders (20101122223524)
+Migrating to CreateRoutes (20101124233312)
+Migrating to CreateRouteStations (20101124233940)
+Migrating to CreateUsers (20101128092556)
+Migrating to CreateRouteDates (20101128210826)
+Migrating to AddRoutesDates (20101128225406)
+Migrating to CreateUnits (20101129214536)
+Migrating to AddUnits (20101129221546)
+Migrating to CreateWagonUnitPlaces (20101129235230)
+Migrating to AddWagonUnitPlaces (20101129235741)
+Migrating to CreatePlaneUnitPlaces (20101130004758)
+Migrating to CreateBusUnitPlaces (20101130004817)
+Migrating to AddPlaneUnitPlaces (20101130004856)
+Migrating to AddBusUnitPlaces (20101130004907)
+Migrating to CreateClients (20101130161806)
+Migrating to CreateTrainDatePlaces (20101212200317)
+Migrating to AddTrainDatePlaces (20101212201042)
+Migrating to CreatePlaneDatePlaces (20101212222702)
+Migrating to AddPlaneDatePlaces (20101212222829)
+Migrating to CreateBusDatePlaces (20101212224508)
+Migrating to AddBusDatePlaces (20101212224519)
+Migrating to CreateTrainPrices (20101213121719)
+Migrating to CreatePlanePrices (20101213121726)
+Migrating to CreateBusPrices (20101213121733)
+Migrating to CreateTickets (20101213170133)
+Migrating to AddColumnPercents (20101216191638)
+Migrating to AddPercents (20101216202430)
+Migrating to AddPrices (20101217165220)
+Migrating to CreateOperators (20101218172043)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCREATE TABLE "operators" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101218172043')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("bus_date_places")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("bus_prices")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("bus_unit_places")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("clients")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("operators")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("plane_date_places")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("plane_prices")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("plane_unit_places")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("providers")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("route_dates")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("route_stations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("routes")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("stations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("tickets")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("train_date_places")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("train_prices")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("units")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("wagon_unit_places")[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateStations (20101028202837)
+Migrating to CreateProviders (20101122223524)
+Migrating to CreateRoutes (20101124233312)
+Migrating to CreateRouteStations (20101124233940)
+Migrating to CreateUsers (20101128092556)
+Migrating to CreateRouteDates (20101128210826)
+Migrating to AddRoutesDates (20101128225406)
+Migrating to CreateUnits (20101129214536)
+Migrating to AddUnits (20101129221546)
+Migrating to CreateWagonUnitPlaces (20101129235230)
+Migrating to AddWagonUnitPlaces (20101129235741)
+Migrating to CreatePlaneUnitPlaces (20101130004758)
+Migrating to CreateBusUnitPlaces (20101130004817)
+Migrating to AddPlaneUnitPlaces (20101130004856)
+Migrating to AddBusUnitPlaces (20101130004907)
+Migrating to CreateClients (20101130161806)
+Migrating to CreateTrainDatePlaces (20101212200317)
+Migrating to AddTrainDatePlaces (20101212201042)
+Migrating to CreatePlaneDatePlaces (20101212222702)
+Migrating to AddPlaneDatePlaces (20101212222829)
+Migrating to CreateBusDatePlaces (20101212224508)
+Migrating to AddBusDatePlaces (20101212224519)
+Migrating to CreateTrainPrices (20101213121719)
+Migrating to CreatePlanePrices (20101213121726)
+Migrating to CreateBusPrices (20101213121733)
+Migrating to CreateTickets (20101213170133)
+Migrating to AddPrices (20101217165220)
+Migrating to CreateOperators (20101218172043)
+Migrating to AddColumnPercents (20101218191638)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "route_stations" ADD "percents" decimal(3,2) DEFAULT 0 NOT NULL[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101218191638')[0m
+Migrating to AddPercents (20101218202430)
+  [4;35;1mRouteStation Load (0.5ms)[0m   [0mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 1) [0m
+  [4;36;1mRouteStation Load (0.5ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 2) [0m
+  [4;35;1mRouteStation Update (0.3ms)[0m   [0mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 0.3 WHERE "id" = 2[0m
+  [4;36;1mRouteStation Load (0.4ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 3) [0m
+  [4;35;1mRouteStation Update (0.2ms)[0m   [0mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 1.0 WHERE "id" = 3[0m
+  [4;36;1mRouteStation Load (0.4ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 4) [0m
+  [4;35;1mRouteStation Load (0.4ms)[0m   [0mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 5) [0m
+  [4;36;1mRouteStation Update (0.2ms)[0m   [0;1mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 0.3 WHERE "id" = 5[0m
+  [4;35;1mRouteStation Load (0.4ms)[0m   [0mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 6) [0m
+  [4;36;1mRouteStation Update (0.1ms)[0m   [0;1mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 1.0 WHERE "id" = 6[0m
+  [4;35;1mRouteStation Load (0.4ms)[0m   [0mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 7) [0m
+  [4;36;1mRouteStation Load (0.4ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 8) [0m
+  [4;35;1mRouteStation Update (0.2ms)[0m   [0mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 1.0 WHERE "id" = 8[0m
+  [4;36;1mRouteStation Load (0.4ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 9) [0m
+  [4;35;1mRouteStation Load (0.4ms)[0m   [0mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 10) [0m
+  [4;36;1mRouteStation Update (0.2ms)[0m   [0;1mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 1.0 WHERE "id" = 10[0m
+  [4;35;1mRouteStation Load (0.4ms)[0m   [0mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 11) [0m
+  [4;36;1mRouteStation Load (0.4ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 12) [0m
+  [4;35;1mRouteStation Update (0.1ms)[0m   [0mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 1.0 WHERE "id" = 12[0m
+  [4;36;1mRouteStation Load (0.4ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 13) [0m
+  [4;35;1mRouteStation Load (0.4ms)[0m   [0mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 14) [0m
+  [4;36;1mRouteStation Update (0.3ms)[0m   [0;1mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 1.0 WHERE "id" = 14[0m
+  [4;35;1mRouteStation Load (0.4ms)[0m   [0mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 15) [0m
+  [4;36;1mRouteStation Load (0.4ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 16) [0m
+  [4;35;1mRouteStation Update (0.2ms)[0m   [0mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 0.5 WHERE "id" = 16[0m
+  [4;36;1mRouteStation Load (0.4ms)[0m   [0;1mSELECT * FROM "route_stations" WHERE ("route_stations"."id" = 17) [0m
+  [4;35;1mRouteStation Update (0.1ms)[0m   [0mUPDATE "route_stations" SET "updated_at" = '2010-12-18 18:57:53', "percents" = 1.0 WHERE "id" = 17[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20101218202430')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("bus_date_places")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("bus_prices")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("bus_unit_places")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("clients")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("operators")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("plane_date_places")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("plane_prices")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("plane_unit_places")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("providers")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("route_dates")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("route_stations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("routes")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("stations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("tickets")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("train_date_places")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("train_prices")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("units")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("wagon_unit_places")[0m
