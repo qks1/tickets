@@ -12,7 +12,7 @@
     <th>Выбор даты отправления</th>
   </tr>
   <% for item in @routes %>
-  <tr>
+  <tr> 
     <td><%= get_kind(item.transport) %></td>
     <td><%= item.provider.company_name %></td>
     <td><%= item.number %></td>
@@ -21,10 +21,18 @@
     <td><%= t_dep_time(item.id, @station_trucking) %></td>
     <td><%= t_station(item.id, @station_arrival) %></td>
     <td><%= t_arr_time(item.id, @station_arrival) %></td>
-    <td><%= t_dates_list('ticket[date]', item.id) %></td>
-    <td><%= button_to 'Заказать', :action => 'list', :id => item.id %></td>
+    <% function = (item.transport == 0 ? 'list_plane_places' : (item.transport == 1 ? 'list_train_places' : 'list_bus_places')) %>
+    <% form_tag :action => function do %>
+    <td><%= t_dates_list('ticket[date_trucking]', item.id) %></td>
+    <%= hidden_field_tag('ticket[route_id]', item.id)  %>
+    <%= hidden_field_tag('ticket[station_trucking]', t_station(item.id, @station_trucking))  %>
+    <%= hidden_field_tag('ticket[station_arrival]', t_station(item.id, @station_arrival))  %>
+    <%= hidden_field_tag('ticket[time_trucking]', t_dep_time(item.id, @station_trucking))  %>
+    <%= hidden_field_tag('ticket[time_arrival]', t_arr_time(item.id, @station_arrival))  %>
+    <td><%= submit_tag 'Заказать' %></td>
   </tr>
   <% end %>
+   <% end %>  
 </table>
 <p><%= link_to 'Возврат к поиску', :controller => 'ticket', :action => 'search' %>
 <p><%= link_to 'На главную', :controller => 'main' %></p>

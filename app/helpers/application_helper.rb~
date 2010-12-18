@@ -21,6 +21,7 @@ module ApplicationHelper
 		unless !session[:user].nil?
 			session[:user].typ == 'Operator' ? true : false
 		end
+		return false
 	end
 
 	def user_type

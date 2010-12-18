@@ -17,15 +17,11 @@
 <table>
   <tr>
     <th>Пункт отправления:</th>
-    <td><%= city_stations_list('ticket[city_station_trucking]', 'ticket[transport]') %></td>
+    <td><%= city_stations_list('ticket[city_station_trucking]') %></td>
   </tr>
   <tr>
     <th>Пункт прибытия:</th>
-    <td><%= city_stations_list('ticket[city_station_arrival]', 'ticket[transport]') %></td>
-  </tr>
-  <tr>
-    <th>Дата:</th>
-    <td><%= date_select 'ticket', :date, :order => [:day, :month, :year] %></td>
+    <td><%= city_stations_list('ticket[city_station_arrival]') %></td>
   </tr>
 </table>
 <table>

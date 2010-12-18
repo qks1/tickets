@@ -29,6 +29,7 @@ class TicketController < ApplicationController
 
   def list_route
     if (params['ticket']['transports']!=nil && params['ticket']['transports'].size != 0)
+       
        @transport = (params['ticket']['transports']).join(', ') << ')'
        @station_trucking = Station.find(:all, :conditions => "city = '#{params['ticket']['city_station_trucking']}' and transport in (" << @transport).
                            map{|i| i = i.id}.join(', ') << ')'
@@ -57,5 +58,35 @@ class TicketController < ApplicationController
     @transports = params['transports']
     @city_arrival = params['city_arrival']
     @city_trucking = params['city_trucking'] 
+    
+  end
+ 
+  
+  def list_bus_places
+   @route = Route.find(params['ticket']['route_id'])
+   @route_id = params['ticket']['route_id']
+   @date_trucking = params['ticket']['date_trucking']
+   @station_trucking = params['ticket']['station_trucking'] 
+   @station_arrival = params['ticket']['station_arrival']
+   @time_trucking = params['ticket']['time_trucking'] 
+   @time_arrival = params['ticket']['time_arrival']
+   d = params['ticket']['date_trucking'].split('-')
+   @date = Date.new(d[0].to_i, d[1].to_i, d[2].to_i)
+   @dates = RouteDate.find(:all, :conditions => "route_id = #{params['ticket']['route_id']} and date = '#{@date}'").map{|i| i = i.id }.pop
+   @places = BusDatePlace.find(:all, :conditions => "route_date_id = #{@dates}", :order => 'place_num')
+   @transports = params['transports']
+   @city_arrival = params['city_arrival']
+   @city_trucking = params['city_trucking'] 
+  end
+
+  def b_place
+    @route = Route.find(params['ticket']['route_id'])
+    @route.transport == 0 ? dp = PlaneDatePlace.find(params[:route_date_id]) : (@route.transport == 1 ? dp = TrainDatePlace.find(params[:route_date_id]) : dp = BusDatePlace.find(params[:route_date_id]))
+    p dp
+    dp.attributes = {:purchased => true}
+    dp.save
+    p dp
+    function = (@route.transport == 0 ? 'list_plane_places' : (@route.transport == 1 ? 'list_train_places' : 'list_bus_places'))
+    redirect_to(:action => function, :ticket => {:route_id => params['ticket']['route_id'], :date_trucking => params['ticket']['date_trucking'], :station_trucking => params['ticket']['station_trucking'], :station_arrival => params['ticket']['station_arrival'], :time_trucking => params['ticket']['time_trucking'], :time_arrival => params['ticket']['time_arrival']})
   end
 end

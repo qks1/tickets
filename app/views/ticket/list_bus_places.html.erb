@@ -1,0 +1,46 @@
+<h1>Заказ билета на автобус</h1>
+
+<table>
+  <tr>
+    <td>Маршрут:</td> 
+    <td><%= @route.number %></td>
+  </tr>  
+  <tr>
+    <td>Дата отправления:</td> 
+    <td><%= date_format(@date) %></td>
+  </tr>  
+   <tr>
+    <td> Место отправления:</td> 
+    <td><%= @station_trucking %></td>
+    <td> Время отправления:</td> 
+    <td><%= @time_trucking %></td>
+  </tr>
+  <tr>
+    <td> Место прибытия:</td> 
+    <td><%= @station_arrival %></td>
+     <td> Время прибытия:</td> 
+    <td><%= @time_arrival %></td>
+  </tr> 
+</table>
+
+<td><b>Выбор места:</b></td>
+<% if @places.size > 0 %>
+<td>Всего мест: <%= @places.size %></td>
+<% end %>
+ 
+<table width="40%" >
+    <tr><th align = "center" width="20%">Номер места</th><th align = "center">Куплено?</th><th align = "center">Добавить в корзину</th></tr>
+  <% for p in @places %>
+    <tr align = "center">
+             <td align = "center" width="20%"><%= p.place_num %></td>
+             <td align = "center"><%= purchased(p.purchased) %></td>
+             <% if p.purchased == false %>
+             <td align = "center"><%= button_to '+', :action => 'b_place', :route_date_id => @dates, :ticket => {:route_id => @route_id, :date_trucking => @date_trucking, :station_trucking => @station_trucking, :station_arrival => @station_arrival, :time_trucking => @time_trucking, :time_arrival => @time_arrival} %></td>
+             <% end %>
+             <td align = "center"><%= p.route_date_id %></td>
+    </tr>
+<% end %>
+</table>
+
+<%= button_to 'Назад', :action => 'list_route', :ticket => {:transports => @transports, :city_station_trucking => @city_trucking, :city_station_arrival => @city_arrival} %>
+<p><%= link_to 'На главную', :controller => 'main' %></p>
