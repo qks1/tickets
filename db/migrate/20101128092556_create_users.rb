@@ -12,7 +12,15 @@ class CreateUsers < ActiveRecord::Migration
 		User.create(:username => 'ololo', 
 								:password => 'ololo',
 								:email => 'aaa@aa.aa',
-								:created_at => '12.12.2010'
+								:created_at => '12.12.2010',
+								:typ => 'Client'
+								)
+
+		User.create(:username => 'admin', 
+								:password => 'admin',
+								:email => 'aaa@aaa.aa',
+								:created_at => '13.12.2010',
+								:typ => 'Operator'
 								)
 
 	end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101217165220) do
+ActiveRecord::Schema.define(:version => 20101218172043) do
 
   create_table "bus_date_places", :force => true do |t|
     t.integer  "route_date_id", :null => false
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(:version => 20101217165220) do
     t.text     "patronic"
     t.datetime "birth_date"
     t.boolean  "banned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "operators", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -121,7 +126,7 @@ ActiveRecord::Schema.define(:version => 20101217165220) do
   create_table "tickets", :force => true do |t|
     t.string   "city_station_tracking", :null => false
     t.string   "city_sattion_arrival",  :null => false
-    t.string   "date"
+    t.date     "date"
     t.string   "transport"
     t.integer  "route_id"
     t.datetime "created_at"

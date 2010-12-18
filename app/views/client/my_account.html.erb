@@ -1,0 +1,14 @@
+<h1>My account</h1>
+<%= "Username: " + @user.username%>
+<br>
+<%= "Account created at " + "#{@user.created_at}"%>
+<br>
+<% if !@user.client.nil? %>
+	<%= "Name = " + @user.client.name %><br>
+	<%= "Surname = " + @user.client.surname %><br>
+	<%= "Patronic = " + @user.client.patronic %><br>
+	<p><%= link_to 'Обновить данные', :controller => 'client', :action => 'edit_account' %>
+<%else%>
+	<p><%= link_to 'Заполнить данные', :controller => 'client', :action => 'edit_account' %>
+<% end %>
+<p><%= link_to 'Вернуться на главную', :controller => 'main', :action => 'index' %>

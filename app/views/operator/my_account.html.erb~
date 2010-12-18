@@ -1,0 +1,5 @@
+<h1>Operator's panel</h1>
+<%= "Username: " + @user.username%>
+<br>
+<p><%= link_to 'Список пользователей', :controller => 'user', :action => 'list' %>
+<p><%= link_to 'Вернуться на главную', :controller => 'index', :action => 'main' %>

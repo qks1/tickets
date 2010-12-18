@@ -1,0 +1,19 @@
+class ClientController < ApplicationController
+  def my_account
+		@user = session[:user]
+  end
+
+  def edit_account
+  end
+	
+	def edit_account_commit
+		user = session[:user]
+		user.client = Client.new(params[:client])
+		if user.client.save
+			redirect_to :action => "my_account"
+		else
+			params[:error] = 'Did not fit the parameters'
+		end
+	end
+
+end

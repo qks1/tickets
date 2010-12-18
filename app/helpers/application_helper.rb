@@ -17,6 +17,17 @@ module ApplicationHelper
     $kinds[tr_id]
   end
 
+	def is_operator?
+		unless !session[:user].nil?
+			session[:user].typ == 'Operator' ? true : false
+		end
+		return false
+	end
+
+	def user_type
+		session[:user].typ
+	end
+
   def kinds_list(field, selected = 0)
     ks = []
     $kinds.each_index{|i| ks << [$kinds[i], i]}
