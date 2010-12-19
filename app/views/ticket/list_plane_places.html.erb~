@@ -96,16 +96,18 @@
 <% end %>
 </tr>
 </table>
-<%= button_to 'Назад', :action => 'list_route',:search => {
-				:transports => @transports, 
-				:city_station_trucking => @city_trucking, 
-				:city_station_arrival => @city_arrival
-			}, :ticket => {
+<%= button_to 'Назад', :action => 'list_route', 
+		       :ticket => {
 				:route_id => @route_id, 
 				:date_trucking => @date_trucking, 
 				:station_trucking => @station_trucking, 
 				:station_arrival => @station_arrival, 
 				:time_trucking => @time_trucking, 
 				:time_arrival => @time_arrival
-			} %>
+			},
+:search => {
+											:transports => @transports, 
+											:city_station_trucking => @city_trucking, 
+											:city_station_arrival => @city_arrival
+											} %>
 <p><%= link_to 'На главную', :controller => 'main' %></p>

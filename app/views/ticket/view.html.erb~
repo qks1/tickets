@@ -15,7 +15,9 @@
 </table>
 <%= button_to 'Назад', :action => 'list_route', 
 			:search => {
-				:transports => @transports, 
-				:city_station_trucking => @city_trucking, 
-				:city_station_arrival => @city_arrival
-			} %>
+				:transports => params['transports'], 
+				:city_station_trucking => params['city_trucking'], 
+				:city_station_arrival => params['city_arrival']
+							}
+							
+						  %>

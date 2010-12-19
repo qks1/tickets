@@ -10,7 +10,7 @@
     		<% $kinds.each do |e| %> 
  		<tr>  
     			<td><%= e %>:</td>
-    			<td><%= check_box_tag('search[transports][]', i, false, :id=>nil) %></td>
+    			<td><%= check_box_tag('ticket[transports][]', i, false, :id=>nil) %></td>
  		</tr> 
 			<% i+=1 %>
 		<% end %>  		
@@ -18,11 +18,11 @@
 	<table>
   		<tr>
     			<th>Пункт отправления:</th>
-    			<td><%= city_stations_list('search[city_station_trucking]') %></td>
+    			<td><%= city_stations_list('ticket[city_station_trucking]') %></td>
  		</tr>
   		<tr>
     			<th>Пункт прибытия:</th>
-    			<td><%= city_stations_list('search[city_station_arrival]') %></td>
+    			<td><%= city_stations_list('ticket[city_station_arrival]') %></td>
   		</tr>
 	</table>
 	<table>
