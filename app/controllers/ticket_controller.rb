@@ -70,7 +70,7 @@ class TicketController < ApplicationController
     		@city_trucking = params[:city_trucking] 
   	end
 
-def list_train_places
+	def list_train_places
 	
 		@route_id = params['ticket']['route_id']
 		@date_trucking = params['ticket']['date_trucking']
@@ -79,11 +79,38 @@ def list_train_places
 		@time_trucking = params['ticket']['time_trucking'] 
 		@time_arrival = params['ticket']['time_arrival']
               
+		@route = Route.find(params['ticket']['route_id'])
+		d = params['ticket']['date_trucking'].split('-')
+   		@date = Date.new(d[0].to_i, d[1].to_i, d[2].to_i)
+
+		id_station = Station.find(:all, :conditions => "name = '#{@station_arrival}'").pop.id
+    	        @route_station = RouteStation.find(:all, :conditions => "route_id = #{@route_id} and station_id = #{id_station}").pop
+                a = @route_station.arr_day.to_i
+                @date_arrival = Date.new(d[0].to_i, d[1].to_i, (d[2].to_i+ a)).to_s.split('-')
+		@k = @route_station.percents
+		#дата, номер маршрута => номер даты маршрута
+   		@dates = RouteDate.find(:all, :conditions => "route_id = #{params['ticket']['route_id']} and date = '#{@date}'").map{|i| i = i.id }.pop
+		#номер даты маршрута => все места по этому маршруту в данную дату
+		@trains = TrainDatePlace.find(:all, :conditions => "route_date_id = #{@dates}", :order => 'place_num')
+		@category= @trains.map{|i| i = i.category}.uniq.sort
+		@wagon_number = @trains.map{|i| i = i.wagon_number}.uniq.sort
 		#параметры для возрата в найденным маршрутам
+		@category_w = []
+		@wagon_number.each do |i|
+			@category_w << TrainDatePlace.find(:all, :conditions => "route_date_id = #{@dates} and wagon_number = #{i}", :order => 'place_num').
+					map{|i| i = i.category}.uniq.sort
+		end
+		@wagon_type =[]
+		@category_w.each do |i|
+			@wagon_type << $categories[@route.transport][i[0]].split(' ')[0]
+		end
+		@type_wagon = @wagon_type.uniq
+		p @type_wagon
 		@transports = params['transports']
 		@city_arrival = params['city_arrival']
 		@city_trucking = params['city_trucking'] 
-	end	
+	
+	end
 
 	def list_plane_places
 	
@@ -114,8 +141,10 @@ def list_train_places
 		@transports = params['transports']
 		@city_arrival = params['city_arrival']
 		@city_trucking = params['city_trucking'] 
-	end	
- 
+	end
+	
+
+
 	def list_bus_places
 	
 		@route_id = params['ticket']['route_id']
@@ -150,9 +179,10 @@ def list_train_places
     		@route = Route.find(params['ticket']['route_id'])
                 p params[:route_date_id]
     		@route.transport == 0 ? dp = PlaneDatePlace.find(:all, :conditions => "route_date_id = #{params[:route_date_id]} and
-										       place_num = #{params[:place]}").pop : 
+										       place_num = #{params[:place]} ").pop : 
 	       (@route.transport == 1 ? dp = TrainDatePlace.find(:all, :conditions => "route_date_id = #{params[:route_date_id]} and
-										       place_num = #{params[:place]}").pop : 
+										       place_num = #{params[:place]} and
+										       wagon_number = #{params[:wagon]}").pop : 
 					dp = BusDatePlace.find(:all, :conditions => "route_date_id = #{params[:route_date_id]} and
 										       place_num = #{params[:place]}").pop)
 
@@ -165,19 +195,18 @@ def list_train_places
 			   (@route.transport == 1 ? 'list_train_places' : 
 						    'list_bus_places'))
 	
-    		redirect_to(:action => function, :ticket => {
+    		redirect_to(:action => function,:transports => params['search']['transports'].map(), 
+						:city_trucking => params['search']['city_station_trucking'], 
+						:city_arrival => params['search']['city_station_arrival'],
+ 						:ticket => {
 							:route_id => params['ticket']['route_id'], 
 							:date_trucking => params['ticket']['date_trucking'], 
 							:station_trucking => params['ticket']['station_trucking'], 
 							:station_arrival => params['ticket']['station_arrival'], 
 							:time_trucking => params['ticket']['time_trucking'], 
 							:time_arrival => params['ticket']['time_arrival']
-						  },
-						  :search => {
-							:transports => params['search']['transports'], 
-							:city_station_trucking => params['search']['city_station_trucking'], 
-							:city_station_arrival => params['search']['city_station_arrival']
-						  })
+						  }
+							)
   end
 
 end

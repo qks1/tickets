@@ -1,0 +1,35 @@
+<h1>Поиск</h1>
+<%= show_errors(params['errors']) unless params['errors'].nil? %>
+
+<% form_tag :action => 'list_route' do %>
+	<table>
+ 		<tr>
+    			<th>Транспорт:</th>
+ 		</tr>
+		<% i=0 %>
+    		<% $kinds.each do |e| %> 
+ 		<tr>  
+    			<td><%= e %>:</td>
+    			<td><%= check_box_tag('ticket[transports][]', i, false, :id=>nil) %></td>
+ 		</tr> 
+			<% i+=1 %>
+		<% end %>  		
+	</table>
+	<table>
+  		<tr>
+    			<th>Пункт отправления:</th>
+    			<td><%= city_stations_list('ticket[city_station_trucking]') %></td>
+ 		</tr>
+  		<tr>
+    			<th>Пункт прибытия:</th>
+    			<td><%= city_stations_list('ticket[city_station_arrival]') %></td>
+  		</tr>
+	</table>
+	<table>
+  		<tr>
+    			<td><%= submit_tag 'Поиск' %></td>
+ 		</tr>
+	</table>
+<% end %>
+<p><%= link_to 'На главную', :controller => 'main' %></p>
+
