@@ -1,4 +1,111 @@
 <h1>Заказ билета на самолет</h1>
+<table>
+  	<tr>
+    		<td>Маршрут:</td> 
+    		<td><%= @route.number %></td>
+  	</tr>  
+  	<tr>
+    		<td>Дата отправления:</td> 
+    		<td><%= date_format(@date) %></td>
+		<td>Дата прибытия:</td>
+                <td><%= "#{@date_arrival[2].to_i} #{$months[@date_arrival[1].to_i-1]}"%></td> 
+    		<td></td>
+  	</tr>  
+   	<tr>
+    		<td> Место отправления:</td> 
+    		<td><%= @station_trucking %></td>
+    		<td> Время отправления:</td> 
+    		<td><%= @time_trucking %></td>
+  	</tr>
+  	<tr>
+    		<td> Место прибытия:</td> 
+    		<td><%= @station_arrival %></td>
+     		<td> Время прибытия:</td> 
+    		<td><%= @time_arrival %></td>
+  	</tr> 
+</table>
+<% i = 0 %>
+<% k = Array.new(@category.size).map{0} %>
 
-<%= button_to 'Назад', :action => 'list_route', :ticket => {:transports => @transports, :city_station_trucking => @city_trucking, :city_station_arrival => @city_arrival} %>
+<table width="60%">
+	<tr>
+ 		<th align = "left" >Выбор места:</th>
+	</tr> 
+	<tr>
+		<td align = "left" >Всего мест: <%= @places.size %></td>
+		<% if @places.size > 0 %>
+			<% for p in @places %> 
+				<% if p.purchased == false %>
+					<% for c in 0 ... @category.size %>
+						<% if(p.category == @category[c])%>
+							<% k[c] += 1%>
+                                		<% end %>
+					<% end %>   
+				<% i += 1 %>
+				<% end %>
+                	<% end %>
+		<% end %>
+ 	</tr>
+	<tr>
+		<td>Свободно: <%= i %> </td>
+	</tr>		
+</table>
+<table width="100%" align = "left">
+<tr>
+<% for c in 0 ... @category.size %>
+<td VALIGN = "top">
+<table>
+		<tr>
+			<th><%= $categories[@route.transport][@category[c]] %></th>
+		</tr>
+		<tr>
+			<td align = "left"><i>Свободно: <%= k[c]%>  </i></td>
+			<td align = "left"><i>Цена: <%= @k*PlanePrice.find(:all, :conditions => "route_date_id = #{@dates} and 
+									     category_id = #{@category[c]}").pop.price %></i></td>
+		</tr>		
+		<tr>
+			<td align = "left">Номер места</td>
+			<td align = "left">Добавить в корзину</td>
+			
+		</tr>
+  		<% for p in @places %>
+			<% if(p.purchased == false && p.category == @category[c])%>
+    					<tr>
+						<td align = "left" ><%= p.place_num %></td>
+             					<td align = "left" ><%= button_to '+', :action => 'bye_place', 
+											:route_date_id => @dates,
+                                                                			:place => p.place_num, 
+                                                                			:ticket => {
+												:route_id => @route_id, 
+												:date_trucking => @date_trucking, 
+												:station_trucking => @station_trucking, 
+												:station_arrival => @station_arrival, 
+												:time_trucking => @time_trucking, 
+												:time_arrival => @time_arrival
+											}, 
+											:search => {
+											:transports => @transports, 
+											:city_station_trucking => @city_trucking, 
+											:city_station_arrival => @city_arrival
+											}%></td>
+					</tr>
+			<% end %>
+		<% end %>
+	</table>
+</td>
+<% end %>
+</tr>
+</table>
+<%= button_to 'Назад', :action => 'list_route',:search => {
+				:transports => @transports, 
+				:city_station_trucking => @city_trucking, 
+				:city_station_arrival => @city_arrival
+			}, :ticket => {
+				:route_id => @route_id, 
+				:date_trucking => @date_trucking, 
+				:station_trucking => @station_trucking, 
+				:station_arrival => @station_arrival, 
+				:time_trucking => @time_trucking, 
+				:time_arrival => @time_arrival
+			} %>
 <p><%= link_to 'На главную', :controller => 'main' %></p>
