@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-lass UserController < ApplicationController
-=======
 class UserController < ApplicationController
->>>>>>> 35b439f8b5618c3cc3a3e204a7eba2b49350724c
 	before_filter :only_operator, :only=>['list']
 
   def list
