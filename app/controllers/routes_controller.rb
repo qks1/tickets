@@ -106,6 +106,7 @@ class RoutesController < ApplicationController
   
   def view_train_places
     @places = TrainDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]}", :order => 'wagon_number, place_num')
+    @wagons = @places.map{|i| i = i.wagon_number}.uniq
     @date = RouteDate.find(params[:date])
     @route = Route.find(params[:route])  
   end

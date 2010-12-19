@@ -16,6 +16,7 @@
       <td><%= p.place_num %></td>
       <td><%= find_price(0, @date.id, 2) %></td>
       <td><%= purchased(p.purchased) %></td>
+      <td><%= @date.id %></td>
       <% if p.purchased == false %>
       <td><%= button_to 'Купить', :action => 'buy_place', :id => p.id, :route_id => @route.id, :date_id => @date.id %>
       <% end %>
