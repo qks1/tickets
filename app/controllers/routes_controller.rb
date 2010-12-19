@@ -105,14 +105,17 @@ class RoutesController < ApplicationController
   end
   
   def view_train_places
-    @places = TrainDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]}", :order => 'wagon_number, place_num')
-    @wagons = @places.map{|i| i = i.wagon_number}.uniq
+    @wagons = TrainDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]}").map{|i| i = i.wagon_number}.uniq
+    @places = Array.new(@wagons.size)
+    @places.each_index{|i| @places[i] = TrainDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]} and wagon_number = #{@wagons[i]}", :order => 'place_num')}
     @date = RouteDate.find(params[:date])
     @route = Route.find(params[:route])  
   end
   
   def view_plane_places
-    @places = PlaneDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]}", :order => 'place_num')
+    @categories = PlaneDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]}").map{|i| i = i.category}.uniq
+    @places = Array.new(@categories.size)
+    @places.each_index{|i| @places[i] = PlaneDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]} and category = #{@categories[i]}", :order => 'place_num')}
     @date = RouteDate.find(params[:date])
     @route = Route.find(params[:route])  
   end
@@ -121,6 +124,18 @@ class RoutesController < ApplicationController
     @places = BusDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]}", :order => 'place_num')
     @date = RouteDate.find(params[:date])
     @route = Route.find(params[:route])  
+  end
+
+  def view_unit_places
+    @date = RouteDate.find(params[:date])
+    @route = Route.find(params[:route])
+    @kind = params[:kind]
+    @route.transport == 1 ? @places = TrainDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]} and wagon_number = #{params[:wagon]}", :order => 'place_num') : (@route.transport == 0 ? @places = PlaneDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]} and category = #{params[:category]}", :order => 'place_num') : @places = BusDatePlace.find(:all, :conditions => "route_date_id = #{params[:date]}", :order => 'place_num'))
+  end
+
+  def delete_wagon
+    TrainDatePlace.delete_all(["wagon_number = ? and route_date_id = ?", params[:wagon], params[:date]])
+    redirect_to(:action => 'view_places', :route_id => params[:route], :id => params[:date])
   end
   
   def buy_place

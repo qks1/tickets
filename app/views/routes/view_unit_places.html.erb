@@ -1,0 +1,30 @@
+<h1>Места <%= @kind %> на <%= date_format(@date.date) %></h1>
+<%= get_categories_places_total(@places, @route.transport) if @route.transport != 2%>
+<table>
+    <tr>
+      <th>Номер места</th>
+<% if @route.transport != 2 %>
+      <th>Категория</th>
+<% end %>
+      <th>Цена</th>
+      <th>Куплено?</th>
+    </tr>
+  <% for p in @places %>
+    <tr>
+      <td><%= p.place_num %></td>
+<% if @route.transport != 2 %>
+      <td><%= get_category(p.category, @route.transport) %></td>
+      <td><%= find_price(p.category, @date.id, @route.transport) %></td>
+<% else %>
+      <td><%= find_price(0, @date.id, 2) %></td>
+<% end %>
+      <td><%= purchased(p.purchased) %></td>
+      <% if p.purchased == false %>
+      <td><%= button_to 'Купить', :action => 'buy_place', :id => p.id, :route_id => @route.id, :date_id => @date.id %>
+      <% end %>
+    </tr>
+  <% end %>  
+</table>
+<%= link_to 'Назад', :action => 'view_places', :id => @date.id, :route_id => @route.id %><br />
+<%= link_to 'К списку маршрутов', :action => 'list' %><br />
+<%= link_to 'На главную', :controller => 'main' %>

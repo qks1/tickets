@@ -7,21 +7,12 @@
 <% end %>
 <table>
     <tr>
-      <th>Номер места</th>
-      <th>Цена</th>
-      <th>Куплено?</th>
+      <th>Места</th>
     </tr>
-  <% for p in @places %>
     <tr>
-      <td><%= p.place_num %></td>
-      <td><%= find_price(0, @date.id, 2) %></td>
-      <td><%= purchased(p.purchased) %></td>
-      <td><%= @date.id %></td>
-      <% if p.purchased == false %>
-      <td><%= button_to 'Купить', :action => 'buy_place', :id => p.id, :route_id => @route.id, :date_id => @date.id %>
-      <% end %>
+      <td><%= get_single_category_places(@places) %></td>
+      <td><%= button_to 'Список мест', :action => 'view_unit_places', :kind => "в автобусе #{@route.number}", :date => @date.id, :route => @route.id %></td>
     </tr>
-  <% end %>  
 </table>
 <%= link_to 'Назад', :action => 'view', :id => @route.id %><br />
 <%= link_to 'К списку маршрутов', :action => 'list' %><br />

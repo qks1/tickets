@@ -1,25 +1,18 @@
 <h1>Места в поезде <%= @route.number %> на <%= date_format(@date.date) %></h1>
-<%= get_categories_places_total(@places, 1) %>
+<%= get_categories_places_total(@places.flatten, 1) %>
 <%= button_to 'Добавить вагон', :action => 'add_wagon', :date => @date.id, :route => @route.id %>
 <%= button_to 'Редактировать цены', :action => 'edit_prices', :date => @date.id, :route => @route.id %>
 <table>
     <tr>
       <th>Номер вагона</th>
-      <th>Номер места</th>
-      <th>Категория</th>
-      <th>Цена</th>
-      <th>Куплено?</th>
+      <th>Места</th>
     </tr>
-  <% for p in @places %>
+  <% @wagons.each_index do |w| %>
     <tr>
-      <td><%= p.wagon_number %></td>
-      <td><%= p.place_num %></td>
-      <td><%= get_category(p.category, 1) %></td>
-      <td><%= find_price(p.category, @date.id, 1) %></td>
-      <td><%= purchased(p.purchased) %></td>
-      <% if p.purchased == false %>
-      <td><%= button_to 'Купить', :action => 'buy_place', :id => p.id, :route_id => @route.id, :date_id => @date.id %>
-      <% end %>
+      <td><%= @wagons[w] %></td>
+      <td><%= get_categories_places_total(@places[w], 1) %></td>
+      <td><%= button_to 'Список мест', :action => 'view_unit_places', :kind => "в вагоне № #{@wagons[w]} поезда #{@route.number}", :date => @date.id, :wagon => @wagons[w], :route => @route.id %></td>
+      <td><%= button_to 'Удалить вагон', :action => 'delete_wagon', :date => @date.id, :wagon => @wagons[w], :route => @route.id %></td>
     </tr>
   <% end %>  
 </table>

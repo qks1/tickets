@@ -14,7 +14,7 @@ module UnitsHelper
     $units[transport]
   end
   
-    def get_category(category, transport)
+  def get_category(category, transport)
     $categories[transport][category]
   end
   
@@ -43,5 +43,17 @@ module UnitsHelper
       s += "<li>#{$categories[transport][i]} - всего #{places_cat[i].size}, свободно #{free};</li>" if places_cat[i].size > 0
     end
     s += "</ul>"
+  end
+
+  def get_wagon_places(wagon, places)
+    ps = []
+    places.each{|p| ps << p if p.wagon_number == wagon}
+    get_categories_places_total(ps, 1)
+  end
+
+  def get_single_category_places(places)
+    s = 0
+    places.each{|i| s+=1 if i.purchased == false}
+    "Всего #{places.size}, свободно #{s}."
   end
 end

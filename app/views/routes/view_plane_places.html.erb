@@ -1,26 +1,20 @@
 <h1>Места в самолёте <%= @route.number %> на <%= date_format(@date.date) %></h1>
 <% if @places.size > 0 %>
-  <%= get_categories_places_total(@places, 0) %>
+  <%= get_categories_places_total(@places.flatten, 0) %>
   <%= button_to 'Редактировать цены', :action => 'edit_prices', :date => @date.id, :route => @route.id %>
 <% else %>
   <%= button_to 'Указать модель самолёта', :action => 'add_plane', :date => @date.id, :route => @route.id %>
 <% end %>
 <table>
     <tr>
-      <th>Номер места</th>
       <th>Категория</th>
-      <th>Цена</th>
-      <th>Куплено?</th>
+      <th>Места</th>
     </tr>
-  <% for p in @places %>
+  <% @categories.each_index do |w| %>
     <tr>
-      <td><%= p.place_num %></td>
-      <td><%= get_category(p.category, 0) %></td>
-      <td><%= find_price(p.category, @date.id, 0) %></td>
-      <td><%= purchased(p.purchased) %></td>
-      <% if p.purchased == false %>
-      <td><%= button_to 'Купить', :action => 'buy_place', :id => p.id, :route_id => @route.id, :date_id => @date.id %>
-      <% end %>
+      <td><%= get_category(@categories[w], 0) %></td>
+      <td><%= get_single_category_places(@places[w]) %></td>
+      <td><%= button_to 'Список мест', :action => 'view_unit_places', :kind => "#{get_category(@categories[w], 0)}а самолёта #{@route.number}", :date => @date.id, :category => @categories[w], :route => @route.id %></td>
     </tr>
   <% end %>  
 </table>
